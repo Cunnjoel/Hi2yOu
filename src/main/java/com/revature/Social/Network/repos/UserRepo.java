@@ -1,6 +1,4 @@
-package com.revature.repos;
-
-import com.revature.models.User;
+package com.revature.Social.Network.repos;
 
 public interface UserRepo {
 
