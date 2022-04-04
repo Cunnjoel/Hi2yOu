@@ -5,6 +5,9 @@ import lombok.*;
 
 
 import javax.persistence.*;
+import java.security.Timestamp;
+import java.util.ArrayList;
+import java.util.List;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -23,8 +26,12 @@ public class Post {
     private String message;
     @Column
     private String picture;
+
+    @OneToMany
+    private List<User> users = new ArrayList<>();
+
     @Column
-    private Integer likes;
+    private Timestamp date;
 
     @ManyToOne
     private User user;
