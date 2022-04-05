@@ -2,10 +2,19 @@ package com.revature.Social.Network.repos;
 
 import com.revature.Social.Network.models.Post;
 import com.revature.Social.Network.models.User;
+import org.hibernate.Session;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+@Repository
 public class PostRepoImlp implements PostRepo{
+
+    @PersistenceContext
+    EntityManager em;
+
     @Override
     public Integer createPost(Post post) {
         return null;
@@ -18,16 +27,19 @@ public class PostRepoImlp implements PostRepo{
 
     @Override
     public Post getPostByUserId(Integer userId) {
-        return null;
+        Session session = em.unwrap(Session.class);
+        return session.get(Post.class, userId);
     }
 
     @Override
     public Integer createLike(User user) {
-        return null;
+        Session session = em.unwrap(Session.class);
+        return (Integer) session.save(user);
     }
 
     @Override
     public List<User> getAllLikes() {
-        return null;
+        Session session = em.unwrap(Session.class);
+        return session.createQuery("from User", User.class).getResultList();
     }
 }
