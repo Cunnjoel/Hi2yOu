@@ -17,12 +17,16 @@ public class PostRepoImlp implements PostRepo{
 
     @Override
     public Integer createPost(Post post) {
-        return null;
+        Session session = em.unwrap(Session.class);
+        return (Integer) session.save(post);
     }
 
     @Override
     public List<Post> getAllPosts() {
-        return null;
+
+    Session session = em.unwrap(Session.class);
+        return session.createQuery("from Post", Post.class).getResultList();
+
     }
 
     @Override

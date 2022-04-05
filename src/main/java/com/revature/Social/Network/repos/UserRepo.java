@@ -1,9 +1,21 @@
 package com.revature.Social.Network.repos;
 
+import com.revature.Social.Network.models.User;
+
+import java.util.List;
+
 public interface UserRepo {
 
-    String createUsername (String username);
+    List<User> getAll();
 
-    String createEmail (String email);
+    Integer createUser(User user);
+
+    void updateUser(User user);
+
+    void deleteUser(User user);
+
+    User getUserByUsername(String username);
+
+
 
 }
