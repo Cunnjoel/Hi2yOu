@@ -4,7 +4,8 @@ import com.revature.Social.Network.models.Profile;
 
 public interface ProfileRepo
 {
-    Profile getProfileById(Integer userId);
+    Profile getProfileById(Integer profileId);
     Integer createProfile(Profile profile);
-    Profile updateProfile(Integer profileId, Profile profile);
+    Profile updateProfile(Profile profile);
+    Profile getProfileByUserId(Integer userId);
 }
