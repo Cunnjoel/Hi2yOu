@@ -37,10 +37,10 @@ public class UserRepoImpl implements UserRepo{
     }
 
     @Override
-    public void deleteUser(User user) {
+    public void deleteUser(Integer userId) {
         Session session =em.unwrap(Session.class);
 
-        session.delete(user);
+        session.delete(getOne(userId));
     }
 
     @Override
@@ -48,5 +48,12 @@ public class UserRepoImpl implements UserRepo{
         Session session =em.unwrap(Session.class);
 
         return session.createQuery("from User where username = :username",User.class).getSingleResult();
+    }
+
+    @Override
+    public User getOne(Integer userId) {
+        Session session =em.unwrap(Session.class);
+
+        return session.get(User.class, userId);
     }
 }
