@@ -6,6 +6,6 @@ public interface ProfileRepo
 {
     Profile getProfileById(Integer profileId);
     Integer createProfile(Profile profile);
-    Profile updateProfile(Profile profile);
+    void updateProfile(Profile profile);
     Profile getProfileByUserId(Integer userId);
 }

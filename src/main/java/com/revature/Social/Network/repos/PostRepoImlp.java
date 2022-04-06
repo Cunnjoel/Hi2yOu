@@ -40,13 +40,19 @@ public class PostRepoImlp implements PostRepo{
     public Post getPostByPostId(Integer postId) {
         Session session = em.unwrap(Session.class);
         return session.get(Post.class, postId);
-
     }
 
     @Override
-    public Integer createLike(User user) {
+    public void createLike(Integer postId, User user) {
         Session session = em.unwrap(Session.class);
-        return (Integer) session.save(user);
+
+        Post post = getPostByPostId(postId);
+
+        List<User> usersThatLike = post.getUsers();
+        usersThatLike.add(user);
+        post.setUsers(usersThatLike);
+
+        session.update(post);
     }
 
     @Override

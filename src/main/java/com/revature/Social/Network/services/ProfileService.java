@@ -19,12 +19,9 @@ public class ProfileService
         this.profileRepo = profileRepo;
     }
 
-    public Profile createProfile(Profile profile)
+    public Integer createProfile(Profile profile)
     {
-        Integer postId = this.profileRepo.createProfile(profile);
-
-        Profile profileFromDb = this.profileRepo.getProfileById(postId);
-        return profileFromDb;
+        return this.profileRepo.createProfile(profile);
     }
 
     public Profile getProfile(Integer profileId)
@@ -37,8 +34,8 @@ public class ProfileService
         return this.profileRepo.getProfileByUserId(userId);
     }
 
-    public Profile updateProfile(Profile profile)
+    public void updateProfile(Profile profile)
     {
-        return this.profileRepo.updateProfile(profile);
+        this.profileRepo.updateProfile(profile);
     }
 }
