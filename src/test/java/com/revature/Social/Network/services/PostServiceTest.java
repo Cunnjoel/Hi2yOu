@@ -75,7 +75,7 @@ class PostServiceTest {
             assertEquals(expectedOutput, actualOutput);
 
         }
-    }
+
 
     @Test
     void getOne() {
