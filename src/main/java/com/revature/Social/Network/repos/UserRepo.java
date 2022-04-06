@@ -12,9 +12,11 @@ public interface UserRepo {
 
     void updateUser(User user);
 
-    void deleteUser(User user);
+    void deleteUser(Integer userId);
 
     User getUserByUsername(String username);
+
+    User getOne (Integer userId);
 
 
 
