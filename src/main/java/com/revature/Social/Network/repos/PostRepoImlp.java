@@ -24,15 +24,23 @@ public class PostRepoImlp implements PostRepo{
     @Override
     public List<Post> getAllPosts() {
 
-    Session session = em.unwrap(Session.class);
+        Session session = em.unwrap(Session.class);
         return session.createQuery("from Post", Post.class).getResultList();
 
     }
 
     @Override
-    public Post getPostByUserId(Integer userId) {
+    public List<Post> getPostByUserId(Integer userId) {
         Session session = em.unwrap(Session.class);
-        return session.get(Post.class, userId);
+        return session.createQuery("from Post", Post.class).getResultList();
+
+    }
+
+    @Override
+    public Post getPostByPostId(Integer postId) {
+        Session session = em.unwrap(Session.class);
+        return session.get(Post.class, postId);
+
     }
 
     @Override
