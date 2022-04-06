@@ -1,4 +1,4 @@
-package com.revature.Social.Network;
+package com.revature.Social.Network.services;
 
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.UserRepo;
