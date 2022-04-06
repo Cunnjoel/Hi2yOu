@@ -7,8 +7,14 @@ import java.util.List;
 
 public interface PostRepo {
     Integer createPost(Post post);
+  
     List<Post> getAllPosts();
-    Post getPostByPostId(Integer userId);
+
+    List<Post> getPostByUserId(Integer userId);
+  
     void createLike(Integer postId, User user);
+
     List<User> getAllLikes();
+  
+    Post getPostByPostId(Integer postId);
 }
