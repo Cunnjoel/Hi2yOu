@@ -31,9 +31,11 @@ public class ProfileRepoImpl implements ProfileRepo
      * @param profile profile object to add to database
      */
     @Override
-    public void createProfile(Profile profile)
+    public Integer createProfile(Profile profile)
     {
         Session session = em.unwrap(Session.class);
+
+        return (Integer) session.save(profile);
     }
 
     /**
