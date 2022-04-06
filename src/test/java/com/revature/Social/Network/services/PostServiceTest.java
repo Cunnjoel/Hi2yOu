@@ -57,7 +57,8 @@ class PostServiceTest {
         }
 
         @Test
-        void getPostByUserId () {
+        void getPostByUserId ()
+        {
 
             //arrange
             Integer userId = 1;
@@ -75,7 +76,6 @@ class PostServiceTest {
             assertEquals(expectedOutput, actualOutput);
 
         }
-
 
     @Test
     void getOne() {
