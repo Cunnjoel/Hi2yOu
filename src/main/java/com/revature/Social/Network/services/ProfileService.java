@@ -19,9 +19,9 @@ public class ProfileService
         this.profileRepo = profileRepo;
     }
 
-    public void createProfile(Profile profile)
+    public Integer createProfile(Profile profile)
     {
-        this.profileRepo.createProfile(profile);
+        return this.profileRepo.createProfile(profile);
     }
 
     public Profile getProfile(Integer profileId)
