@@ -4,6 +4,7 @@ import com.revature.Social.Network.models.Post;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.PostRepo;
 import com.revature.Social.Network.services.PostService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,7 +13,7 @@ import java.util.List;
 @RestController
 @RequestMapping("post")
 public class PostController {
-
+    Logger logger = Logger.getLogger(PostController.class);
 
     private PostService postService;
     @Autowired

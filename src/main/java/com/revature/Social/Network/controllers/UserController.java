@@ -2,6 +2,7 @@ package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.services.UserService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.List;
 @RestController
 @RequestMapping("user")
 public class UserController {
+    Logger logger = Logger.getLogger(UserController.class);
 
     @Autowired
     private UserService userService;
