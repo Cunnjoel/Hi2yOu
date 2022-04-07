@@ -1,4 +1,4 @@
-package com.revature.Social.Network.controller;
+package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.services.UserService;
