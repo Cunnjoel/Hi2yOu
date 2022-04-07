@@ -14,6 +14,9 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+    public UserController(UserService userService) {
+    }
+
     @GetMapping
     public List<User> getAllUser(){
         return this.userService.getAll();
