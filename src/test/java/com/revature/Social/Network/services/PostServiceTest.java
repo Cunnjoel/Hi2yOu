@@ -76,6 +76,10 @@ class PostServiceTest {
             assertEquals(expectedOutput, actualOutput);
 
         }
+<<<<<<< HEAD
+
+=======
+>>>>>>> 836ff4b4b2384dd31db209b39f23b6083811b6c6
 
     @Test
     void getOne() {
