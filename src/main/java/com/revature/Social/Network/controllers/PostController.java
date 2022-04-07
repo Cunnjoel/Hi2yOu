@@ -25,8 +25,7 @@ public class PostController {
     public PostController(PostService postService) { this.postService = postService; }
 
     @PostMapping
-    public void createProfile(@RequestBody Post post)
-    {
+    public void createPost(@RequestBody Post post) {
         postService.createPost(post);
     }
 
@@ -43,7 +42,9 @@ public class PostController {
     }
 
     @GetMapping("{postId}")
-    public Post getOne(@PathVariable Integer postId) { return this.postService.getOne(postId); }
+    public Post getOne(@PathVariable Integer postId) {
+        return this.postService.getOne(postId);
+    }
 
     @PatchMapping("{postId}/user/{userId}")
     public void addLike(@PathVariable Integer postId, @PathVariable Integer userId) {
