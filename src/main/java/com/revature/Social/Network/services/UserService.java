@@ -40,5 +40,10 @@ public class UserService {
     public User getUserGivenUsername(String username){
         return userRepo.getUserByUsername(username);
     }
+
+    public User getUserById(Integer userId)
+    {
+        return userRepo.getOne(userId);
+    }
 }
 

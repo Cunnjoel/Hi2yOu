@@ -40,6 +40,6 @@ public class PostService {
         this.postRepo.createLike(postId, user);
     }
 
-    public List<User> getAllLikes(){ return this.postRepo.getAllLikes(); }
+    public List<User> getAllLikes(Integer postId){ return this.postRepo.getAllLikes(postId); }
 
 }

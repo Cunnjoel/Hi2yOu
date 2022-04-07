@@ -41,7 +41,9 @@ public class UserController {
         return "the user with the id" + userId + "was successfully deleted";
     }
 
-    @GetMapping ("username")
+
+    @GetMapping("{username}")
+
     public User getUserGivenUsername(@PathVariable String username){
         return this.userService.getUserGivenUsername(username);
     }
