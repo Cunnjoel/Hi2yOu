@@ -108,9 +108,9 @@ class PostServiceTest {
         List<User> expectedOutput = new ArrayList<>();
         expectedOutput.add(new User(1,"user","pass", "email"));
         expectedOutput.add(new User(2,"user3","pass", "email3"));
-        Mockito.when(postRepo.getAllLikes()).thenReturn(expectedOutput);
+        Mockito.when(postRepo.getAllLikes(1)).thenReturn(expectedOutput);
 
-        List<User> actualOutput = postService.getAllLikes();
+        List<User> actualOutput = postService.getAllLikes(1);
 
         assertEquals(expectedOutput, actualOutput);
     }
