@@ -1,6 +1,7 @@
 package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.User;
+import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpSession;
 @RestController
 @RequestMapping(value = "session")
 public class SessionController {
+    Logger logger = Logger.getLogger(SessionController.class);
 
     @PostMapping
     public ResponseEntity<User> login(HttpSession httpSession, @RequestBody User user){
