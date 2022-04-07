@@ -22,29 +22,32 @@ public class PostController {
     @Autowired
     PostService postService;
 
+    public PostController(PostService postService) {
+
+    }
+
     @PostMapping
-    public void createProfile(@RequestBody Post post)
-    {
+    public void createPost(@RequestBody Post post) {
         postService.createPost(post);
     }
 
     @GetMapping("{userId}")
-    public List<Post> getPostByUserId(@PathVariable Integer userId)
-    {
+    public List<Post> getPostByUserId(@PathVariable Integer userId) {
         return this.postService.getPostByUserId(userId);
     }
 
     @GetMapping
-    public List<Post> getAllPosts(@RequestBody Post post)
-    {
+    public List<Post> getAllPosts() {
         return this.postService.getAllPosts();
     }
 
     @GetMapping("{postId}")
-    public Post getOne(@PathVariable Integer postId) { return this.postService.getOne(postId); }
+    public Post getOne(@PathVariable Integer postId) {
+        return this.postService.getOne(postId);
+    }
 
     @PatchMapping("{postId}/user/{user}")
-    public Post addLike(@PathVariable Integer postId, @PathVariable User user) { postService.addLike(postId, user);
+    public Post addLike(@PathVariable Integer postId, @PathVariable User user) { this.postService.addLike(postId, user);
         return null;
     }
 
