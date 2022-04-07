@@ -14,7 +14,7 @@ public interface PostRepo {
   
     void createLike(Integer postId, User user);
 
-    List<User> getAllLikes();
+    List<User> getAllLikes(Integer postId);
   
     Post getPostByPostId(Integer postId);
 }

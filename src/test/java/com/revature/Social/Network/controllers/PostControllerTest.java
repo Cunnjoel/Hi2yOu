@@ -96,9 +96,10 @@ class PostControllerTest {
     @Test
     void addLike() {
         Integer postId = 1;
+        Integer userId = 0;
         User user = new User();
 
-        postController.addLike(postId, user);
+        postController.addLike(postId, userId);
 
         Mockito.verify(postService).addLike(postId, user);
     }
@@ -109,9 +110,9 @@ class PostControllerTest {
         List<User> expectedOutput = new ArrayList<>();
         expectedOutput.add(new User(1,"user","pass", "email"));
         expectedOutput.add(new User(2,"user3","pass", "email3"));
-        Mockito.when(postService.getAllLikes()).thenReturn(expectedOutput);
+        Mockito.when(postService.getAllLikes(1)).thenReturn(expectedOutput);
 
-        List<User> actualOutput = postController.getAllLikes();
+        List<User> actualOutput = postController.getAllLikes(1);
 
         assertEquals(expectedOutput, actualOutput);
     }

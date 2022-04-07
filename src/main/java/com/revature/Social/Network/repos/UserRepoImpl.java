@@ -19,7 +19,7 @@ public class UserRepoImpl implements UserRepo{
     public List<User> getAll() {
         Session session =em.unwrap(Session.class);
 
-        return session.createQuery("from", User.class).getResultList();
+        return session.createQuery("from User", User.class).getResultList();
     }
 
     @Override
@@ -47,7 +47,7 @@ public class UserRepoImpl implements UserRepo{
     public User getUserByUsername(String username) {
         Session session =em.unwrap(Session.class);
 
-        return session.createQuery("from User where username = :username",User.class).getSingleResult();
+        return session.createQuery("from User where username = '" + username + "'",User.class).getSingleResult();
     }
 
     @Override
