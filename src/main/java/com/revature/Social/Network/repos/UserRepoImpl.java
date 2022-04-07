@@ -19,7 +19,7 @@ public class UserRepoImpl implements UserRepo{
     public List<User> getAll() {
         Session session =em.unwrap(Session.class);
 
-        return session.createQuery("from", User.class).getResultList();
+        return session.createQuery("from User", User.class).getResultList();
     }
 
     @Override
