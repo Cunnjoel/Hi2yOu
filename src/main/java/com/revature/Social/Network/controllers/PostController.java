@@ -4,6 +4,7 @@ import com.revature.Social.Network.models.Post;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.PostRepo;
 import com.revature.Social.Network.services.PostService;
+import com.revature.Social.Network.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +17,10 @@ public class PostController {
     Logger logger = Logger.getLogger(PostController.class);
 
     private PostService postService;
+
+    @Autowired
+    private UserService userService;
+
     @Autowired
     public PostController(PostService postService) { this.postService = postService; }
 
@@ -24,13 +29,15 @@ public class PostController {
         postService.createPost(post);
     }
 
-    @GetMapping("{userId}")
-    public List<Post> getPostByUserId(@PathVariable Integer userId) {
+    @GetMapping("/user/{userId}")
+    public List<Post> getPostByUserId(@PathVariable Integer userId)
+    {
         return this.postService.getPostByUserId(userId);
     }
 
     @GetMapping
-    public List<Post> getAllPosts() {
+    public List<Post> getAllPosts()
+    {
         return this.postService.getAllPosts();
     }
 
@@ -39,12 +46,12 @@ public class PostController {
         return this.postService.getOne(postId);
     }
 
-    @PatchMapping("{postId}/user/{user}")
-    public Post addLike(@PathVariable Integer postId, @PathVariable User user) { this.postService.addLike(postId, user);
-        return null;
+    @PatchMapping("{postId}/user/{userId}")
+    public void addLike(@PathVariable Integer postId, @PathVariable Integer userId) {
+        postService.addLike(postId, userService.getUserById(userId));
     }
 
-    @GetMapping("likes")
-    public List<User> getAllLikes() { return this.postService.getAllLikes(); }
+    @GetMapping("{postId}/likes")
+    public List<User> getAllLikes(@PathVariable Integer postId) { return this.postService.getAllLikes(postId); }
 
 }

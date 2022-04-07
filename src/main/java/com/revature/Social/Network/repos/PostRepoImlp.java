@@ -56,8 +56,8 @@ public class PostRepoImlp implements PostRepo{
     }
 
     @Override
-    public List<User> getAllLikes() {
-        Session session = em.unwrap(Session.class);
-        return session.createQuery("from User", User.class).getResultList();
+    public List<User> getAllLikes(Integer postId) {
+
+        return getPostByPostId(postId).getUsers();
     }
 }
