@@ -1,13 +1,8 @@
 package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.Post;
-
-
-
-
-
 import com.revature.Social.Network.models.User;
-
+import com.revature.Social.Network.repos.PostRepo;
 import com.revature.Social.Network.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -16,11 +11,12 @@ import java.util.List;
 
 @RestController
 @RequestMapping("post")
-
 public class PostController {
 
+
+    private PostService postService;
     @Autowired
-    PostService postService;
+    public PostController(PostService postService) { this.postService = postService; }
 
     @PostMapping
     public void createProfile(@RequestBody Post post)
