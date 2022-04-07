@@ -9,8 +9,13 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("profile")
 public class ProfileController
 {
-    @Autowired
     ProfileService profileService;
+
+    @Autowired
+    public ProfileController(ProfileService profileService)
+    {
+        this.profileService = profileService;
+    }
 
     @PostMapping
     public Profile createProfile(@RequestBody Profile profile)
