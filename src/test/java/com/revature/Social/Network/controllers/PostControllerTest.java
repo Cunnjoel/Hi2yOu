@@ -3,6 +3,7 @@ package com.revature.Social.Network.controllers;
 import com.revature.Social.Network.models.Post;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.services.PostService;
+import com.revature.Social.Network.services.UserService;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 
@@ -57,5 +58,21 @@ class PostControllerTest {
         List<User> actualOutput = postController.getAllLikes();
 
         assertEquals(expectedOutput, actualOutput);
+    }
+
+    public static class UserControllerTest {
+
+        private UserController userController;
+
+        private UserService userService = Mockito.mock(UserService.class);
+
+        public UserControllerTest() {
+            this.userController = new UserController(userService);
+        }
+
+       @Test
+        void createUser(){
+
+       }
     }
 }
