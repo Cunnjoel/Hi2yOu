@@ -1,6 +1,12 @@
 package com.revature.Social.Network.controllers;
+
 import com.revature.Social.Network.models.Post;
 
+
+
+
+
+import com.revature.Social.Network.models.User;
 
 import com.revature.Social.Network.services.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,19 +28,27 @@ public class PostController {
         postService.createPost(post);
     }
 
-    @GetMapping("userPost/{userId}")
+    @GetMapping("{userId}")
     public List<Post> getPostByUserId(@PathVariable Integer userId)
     {
         return this.postService.getPostByUserId(userId);
     }
 
-    @GetMapping("post")
+    @GetMapping
     public List<Post> getAllPosts(@RequestBody Post post)
     {
         return this.postService.getAllPosts();
     }
 
+    @GetMapping("{postId}")
+    public Post getOne(@PathVariable Integer postId) { return this.postService.getOne(postId); }
 
+    @PatchMapping("{postId}/user/{user}")
+    public Post addLike(@PathVariable Integer postId, @PathVariable User user) { postService.addLike(postId, user);
+        return null;
+    }
 
+    @GetMapping("likes")
+    public List<User> getAllLikes() { return this.postService.getAllLikes(); }
 
 }

@@ -13,9 +13,9 @@ public class ProfileController
     ProfileService profileService;
 
     @PostMapping
-    public void createProfile(@RequestBody Profile profile)
+    public Profile createProfile(@RequestBody Profile profile)
     {
-        profileService.createProfile(profile);
+        return profileService.createProfile(profile);
     }
 
     @GetMapping("profile/{profileId}")
@@ -31,8 +31,8 @@ public class ProfileController
     }
 
     @PatchMapping
-    public void UpdateProfile(@RequestBody Profile profile)
+    public Profile UpdateProfile(@RequestBody Profile profile)
     {
-        profileService.updateProfile(profile);
+        return profileService.updateProfile(profile);
     }
 }
