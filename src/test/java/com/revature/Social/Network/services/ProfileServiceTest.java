@@ -11,9 +11,9 @@ import static org.junit.jupiter.api.Assertions.*;
 class ProfileServiceTest
 {
 
-    ProfileService profileService;
+    private ProfileService profileService;
 
-    ProfileRepo profileRepo = Mockito.mock(ProfileRepo.class);
+    private ProfileRepo profileRepo = Mockito.mock(ProfileRepo.class);
 
     public ProfileServiceTest()
     {

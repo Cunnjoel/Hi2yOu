@@ -2,15 +2,24 @@ package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.services.ProfileService;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("profile")
 public class ProfileController
+
 {
-    @Autowired
+    Logger logger = Logger.getLogger(ProfileController.class);
+
     ProfileService profileService;
+
+    @Autowired
+    public ProfileController(ProfileService profileService)
+    {
+        this.profileService = profileService;
+    }
 
     @PostMapping
     public Profile createProfile(@RequestBody Profile profile)
