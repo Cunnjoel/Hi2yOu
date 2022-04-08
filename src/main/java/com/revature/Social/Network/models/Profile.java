@@ -17,6 +17,9 @@ public class Profile
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @Column(nullable = true)
+    private String pictureUrl;
+
     @OneToOne
     @JoinColumn(name = "userid", referencedColumnName = "userId")
     private User user;
