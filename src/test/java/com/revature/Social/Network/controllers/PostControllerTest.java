@@ -19,12 +19,14 @@ class PostControllerTest {
 
     PostController postController;
 
+
     PostService postService = Mockito.mock(PostService.class);
 
     public PostControllerTest() {
         postController = new PostController(postService);
 
     }
+
     @Test
     void createPost() {
         //arrange
@@ -96,12 +98,12 @@ class PostControllerTest {
     @Test
     void addLike() {
         Integer postId = 1;
-        Integer userId = 0;
-        User user = new User();
+        Integer userId = 2;
+        UserService userService = Mockito.mock(UserService.class);
 
         postController.addLike(postId, userId);
-
-        Mockito.verify(postService).addLike(postId, user);
+        
+        Mockito.verify(postService).addLike(postId, userService.getUserById(userId));
     }
 
     @Test
