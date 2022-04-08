@@ -1,16 +1,19 @@
 package com.revature.Social.Network.repos;
 
 import com.revature.Social.Network.models.Profile;
+import com.revature.Social.Network.utils.S3Utility;
 import org.hibernate.Session;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.io.File;
 
 @Repository
 public class ProfileRepoImpl implements ProfileRepo
 {
 
+    S3Utility s3Utility;
     @PersistenceContext
     EntityManager em;
 
@@ -36,7 +39,11 @@ public class ProfileRepoImpl implements ProfileRepo
         Session session = em.unwrap(Session.class);
         if (profile.getPictureUrl() != null)
         {
-
+//            UploadedFile uploadedFile = context.uploadedFile("file");
+//
+//            File file = new File("uploads/" + uploadedFile.getFilename());
+//            s3Utility.uploadFile(file);
+//            profile.setPictureUrl(s3Utility.bucketName + s3Utility.picturerUrl + profile.getPictureUrl());
         }
         return (Integer) session.save(profile);
     }
@@ -51,7 +58,7 @@ public class ProfileRepoImpl implements ProfileRepo
         Session session = em.unwrap(Session.class);
         if (profile.getPictureUrl() != null)
         {
-
+            //profile.setPictureUrl(s3Utility.bucketName + s3Utility.picturerUrl + profile.getPictureUrl());
         }
         session.update(profile);
     }
