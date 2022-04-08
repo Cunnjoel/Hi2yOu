@@ -2,6 +2,7 @@ package com.revature.Social.Network.models;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 
 import javax.persistence.*;
@@ -30,8 +31,9 @@ public class Post {
     @OneToMany
     private List<User> users = new ArrayList<>();
 
+    @CreationTimestamp
     @Column
-    private Timestamp date;
+    private java.sql.Timestamp date;
 
     @ManyToOne
     private User user;
