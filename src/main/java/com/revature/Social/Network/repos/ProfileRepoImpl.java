@@ -34,7 +34,10 @@ public class ProfileRepoImpl implements ProfileRepo
     public Integer createProfile(Profile profile)
     {
         Session session = em.unwrap(Session.class);
+        if (profile.getPictureUrl() != null)
+        {
 
+        }
         return (Integer) session.save(profile);
     }
 
@@ -46,6 +49,10 @@ public class ProfileRepoImpl implements ProfileRepo
     public void updateProfile(Profile profile)
     {
         Session session = em.unwrap(Session.class);
+        if (profile.getPictureUrl() != null)
+        {
+
+        }
         session.update(profile);
     }
 
