@@ -8,6 +8,7 @@ import com.revature.Social.Network.repos.PostRepo;
 import com.revature.Social.Network.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -42,4 +43,8 @@ public class PostService {
 
     public List<User> getAllLikes(Integer postId){ return this.postRepo.getAllLikes(postId); }
 
+    public String uploadProfilePic(MultipartFile file)
+    {
+        return this.postRepo.uploadProfilePic(file);
+    }
 }

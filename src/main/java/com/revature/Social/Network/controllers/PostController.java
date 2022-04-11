@@ -8,6 +8,7 @@ import com.revature.Social.Network.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -54,4 +55,9 @@ public class PostController {
     @GetMapping("{postId}/likes")
     public List<User> getAllLikes(@PathVariable Integer postId) { return this.postService.getAllLikes(postId); }
 
+    @PostMapping("upload")
+    public String uploadProfilePic(@RequestParam("file") MultipartFile file)
+    {
+        return this.postService.uploadProfilePic(file);
+    }
 }
