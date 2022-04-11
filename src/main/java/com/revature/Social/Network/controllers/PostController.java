@@ -19,11 +19,10 @@ public class PostController {
 
     private PostService postService;
 
-    @Autowired
     private UserService userService;
 
     @Autowired
-    public PostController(PostService postService) { this.postService = postService; }
+    public PostController(PostService postService, UserService userService) { this.postService = postService; this.userService = userService; }
 
     @PostMapping
     public void createPost(@RequestBody Post post) {
