@@ -33,4 +33,4 @@ build/
 .vscode/
 
 ### Database Tables ###
-.h2/
+h2/
