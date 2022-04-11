@@ -2,8 +2,10 @@ package com.revature.Social.Network.services;
 
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.repos.ProfileRepo;
+import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.transaction.Transactional;
 
@@ -41,5 +43,10 @@ public class ProfileService
         this.profileRepo.updateProfile(profile);
 
         return this.profileRepo.getProfileById(profile.getId());
+    }
+
+    public String uploadProfilePic(MultipartFile file)
+    {
+        return this.profileRepo.uploadProfilePic(file);
     }
 }
