@@ -83,7 +83,7 @@ class PostServiceTest {
         User newUser= new User();
         List<User> newList = new ArrayList<>();
 
-        Post expectedOutput = new Post(postId, "lorem ipsom","picture", newList, null,newUser);
+        Post expectedOutput = new Post(2, "lorem ipsom","picture", newList, null,newUser);
 
         Mockito.when(postRepo.getPostByPostId(postId)).thenReturn(expectedOutput);
 

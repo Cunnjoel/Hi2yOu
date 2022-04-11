@@ -16,9 +16,9 @@ public class PostRepoImlp implements PostRepo{
     EntityManager em;
 
     @Override
-    public Integer createPost(Post post) {
+    public void createPost(Post post) {
         Session session = em.unwrap(Session.class);
-        return (Integer) session.save(post);
+       // return (Integer) session.save(post);
     }
 
     @Override
