@@ -23,12 +23,10 @@ public class PostService {
     public PostService(PostRepo postRepo) { this.postRepo = postRepo; }
 
 
-    public Post createPost(Post post)
+    public void createPost(Post post)
     {
-        Integer postId = this.postRepo.createPost(post);
+         this.postRepo.createPost(post);
 
-        Post postFromDb = this.postRepo.getPostByPostId(postId);
-        return postFromDb;
     }
     public List<Post> getAllPosts(){ return this.postRepo.getAllPosts();
     }

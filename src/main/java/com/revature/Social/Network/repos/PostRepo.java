@@ -7,7 +7,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.util.List;
 
 public interface PostRepo {
-    Integer createPost(Post post);
+    void createPost(Post post);
   
     List<Post> getAllPosts();
 

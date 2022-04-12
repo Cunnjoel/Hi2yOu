@@ -86,7 +86,7 @@ class PostControllerTest {
         User newUser= new User();
         List<User> newList = new ArrayList<>();
 
-        Post expectedOutput = new Post(postId, "lorem ipsom","picture", newList, null,newUser);
+        Post expectedOutput = new Post(2, "lorem ipsom","picture", newList, null,newUser);
 
         Mockito.when(postService.getOne(postId)).thenReturn(expectedOutput);
 
@@ -116,7 +116,7 @@ class PostControllerTest {
         expectedOutput.add(new User(2,"user3","pass", "email3"));
         Mockito.when(postService.getAllLikes(1)).thenReturn(expectedOutput);
 
-        List<User> actualOutput = postController.getAllLikes(1);
+        List<User> actualOutput = postController.getAllLikes(postId);
 
         assertEquals(expectedOutput, actualOutput);
     }
