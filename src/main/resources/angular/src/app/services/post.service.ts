@@ -30,8 +30,9 @@ export class PostService {
       "user": user
     });
   }
-  
+
   getPostByUserId(userId : number){
+  console.log(user)
     return this.httpCli.get<Post>(`http://localhost:9000/post/${userId}`);
   }
 
