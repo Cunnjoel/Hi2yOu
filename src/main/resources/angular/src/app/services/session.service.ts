@@ -1,4 +1,5 @@
 import { HttpClient } from '@angular/common/http';
+import { identifierName } from '@angular/compiler';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -8,11 +9,10 @@ export class SessionService {
 
   constructor(private httpCli : HttpClient) { }
 
-  login(username: string, password: string, email: string){
+  login(userId: string,username: string){
     return this.httpCli.post<any>(`http://localhost:9000/session`, {
-      "username": username,
-      "password": password,
-      "email": email
+      "id": userId,
+      "username": username
     },
     {
       withCredentials: true
