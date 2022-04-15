@@ -1,5 +1,6 @@
 package com.revature.Social.Network.controllers;
 
+import com.revature.Social.Network.models.Picture;
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.services.ProfileService;
 import org.apache.log4j.Logger;
@@ -42,14 +43,15 @@ public class ProfileController
     }
 
     @PatchMapping
-    public Profile UpdateProfile(@RequestBody Profile profile)
+    public Profile updateProfile(@RequestBody Profile profile)
     {
         return profileService.updateProfile(profile);
     }
 
     @PostMapping("upload")
-    public String uploadProfilePic(@RequestParam("file")MultipartFile file)
+    public Picture uploadProfilePic(@RequestParam("file")MultipartFile file)
     {
-        return this.profileService.uploadProfilePic(file);
+        Picture picture = new Picture(this.profileService.uploadProfilePic(file));
+        return picture;
     }
 }
