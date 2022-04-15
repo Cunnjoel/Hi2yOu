@@ -41,13 +41,6 @@ public class ProfileRepoImpl implements ProfileRepo
     public Integer createProfile(Profile profile)
     {
         Session session = em.unwrap(Session.class);
-        if (profile.getPictureUrl() != null)
-        {
-            System.out.println(profile.getPictureUrl());
-            System.out.println(s3Utility.bucketName);
-            System.out.println(s3Utility.picturerUrl);
-            profile.setPictureUrl(s3Utility.bucketName + s3Utility.picturerUrl + profile.getPictureUrl());
-        }
         return (Integer) session.save(profile);
     }
 
@@ -59,10 +52,6 @@ public class ProfileRepoImpl implements ProfileRepo
     public void updateProfile(Profile profile)
     {
         Session session = em.unwrap(Session.class);
-        if (profile.getPictureUrl() != null)
-        {
-            profile.setPictureUrl(s3Utility.bucketName + s3Utility.picturerUrl + profile.getPictureUrl());
-        }
         session.update(profile);
     }
 
@@ -96,6 +85,6 @@ public class ProfileRepoImpl implements ProfileRepo
             System.out.println(e.getStackTrace());
             return "Filed not uploaded!";
         }
-        return "Filed uploaded Successfully";
+        return s3Utility.bucketName + s3Utility.picturerUrl + file.getOriginalFilename();
     }
 }
