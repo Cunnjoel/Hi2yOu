@@ -34,7 +34,7 @@ public class PostRepoImlp implements PostRepo{
         {
             post.setPicture(s3Utility.bucketName + s3Utility.picturerUrl + post.getPicture());
         }
-         session.save(post);
+        session.save(post);
 
     }
     /**
