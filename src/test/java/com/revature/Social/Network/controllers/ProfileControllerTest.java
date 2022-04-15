@@ -58,7 +58,7 @@ class ProfileControllerTest
     void updateProfile()
     {
         User newUser = new User();
-        Profile expectedProfile = profileController.UpdateProfile(new Profile(1,null,newUser,"Kevin",null,"Childs","7/05/1985","Houston","Texas",null));
+        Profile expectedProfile = profileController.updateProfile(new Profile(1,null,newUser,"Kevin",null,"Childs","7/05/1985","Houston","Texas",null));
 
         Profile actaulProfile = profileService.updateProfile(expectedProfile);
 
