@@ -9,6 +9,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("profile")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class ProfileController
 
 {
