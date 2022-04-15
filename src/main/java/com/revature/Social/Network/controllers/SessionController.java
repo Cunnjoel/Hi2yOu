@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 
 @RestController
 @RequestMapping(value = "session")
+@CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class SessionController {
     Logger logger = Logger.getLogger(SessionController.class);
 
