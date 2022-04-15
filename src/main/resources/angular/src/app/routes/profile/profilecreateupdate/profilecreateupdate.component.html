@@ -1,0 +1,12 @@
+<div class="container center">
+    Create/Update Profile Page!
+    <input type="file" (change)="addFile($event)"/>
+    <input type="text" placeholder="First Name" [(ngModel)]="newProfile.firstName">
+    <input type="text" placeholder="Middle Initial" [(ngModel)]="newProfile.middleInit">
+    <input type="text" placeholder="Last Name" [(ngModel)]="newProfile.lastName">
+    <input type="text" placeholder="Birthday" [(ngModel)]="newProfile.birthday">
+    <input type="text" placeholder="City" [(ngModel)]="newProfile.city">
+    <input type="text" placeholder="State" [(ngModel)]="newProfile.state">
+    <input type="text" placeholder="About Me" [ngModel]="newProfile.aboutMe">
+    <button (click)="createProfile()">Create Profile</button>
+</div>
