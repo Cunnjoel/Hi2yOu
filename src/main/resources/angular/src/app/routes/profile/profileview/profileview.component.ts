@@ -13,14 +13,22 @@ export class ProfileviewComponent implements OnInit {
   constructor(private profileService : ProfileService) { }
 
   ngOnInit(): void {
-    this.getProfileById();
+    this.getProfileById(this.profileService.currentUserProfile.id);
   }
 
-  getProfileById()
+  getProfileById(id : number)
   {
     console.log(this.profileService.currentUserProfile);
-      this.profileService.getProfileById(1).subscribe(responseBody=>{
-      this.profileViewing = responseBody;
-      });
+    this.profileService.getProfileById(id).subscribe(responseBody=>{
+    this.profileViewing = responseBody;
+    });
+  }
+
+  getProfileByUserId(userId : number)
+  {
+    console.log(this.profileService.currentUserProfile);
+    this.profileService.getProfileByUserId(userId).subscribe(responseBody=>{
+    this.profileViewing = responseBody;
+    });
   }
 }
