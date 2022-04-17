@@ -7,6 +7,7 @@
     <input type="text" placeholder="Birthday" [(ngModel)]="newProfile.birthday">
     <input type="text" placeholder="City" [(ngModel)]="newProfile.city">
     <input type="text" placeholder="State" [(ngModel)]="newProfile.state">
-    <input type="text" placeholder="About Me" [ngModel]="newProfile.aboutMe">
+    <input type="text" placeholder="About Me" [(ngModel)]="newProfile.aboutMe">
     <button (click)="createProfile()">Create Profile</button>
+    <button (click)="updateProfile()">Update Profile</button>
 </div>
