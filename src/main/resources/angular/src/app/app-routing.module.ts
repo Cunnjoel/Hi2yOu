@@ -9,9 +9,10 @@ import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatep
 const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "register", component: RegisterComponent},
-  {path: "profile", component: ProfilecreateupdateComponent},
-  {path: "dashboard", component: DashboardcreatepostComponent},
+  {path: 'profile', component: ProfilecreateupdateComponent},
   {path: 'viewprofile/:id', component : ProfileviewComponent},
+  {path: 'viewprofile/user/:id', component : ProfileviewComponent},
+  {path: 'dashboard', component: DashboardcreatepostComponent},
   {path: "**", redirectTo: ""}
 ];
 
