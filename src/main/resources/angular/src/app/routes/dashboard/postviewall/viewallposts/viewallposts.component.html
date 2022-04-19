@@ -1,0 +1,8 @@
+<h2>View All Messages</h2>
+<div class="List"></div>
+    <div *ngFor="let msg of postViewing; let i = index">
+        {{i}} : {{postViewing.message}} {{postViewing.user.userId}}
+
+    </div>
+    <button (click)="postViewAll()">view Post</button>
+</div>
