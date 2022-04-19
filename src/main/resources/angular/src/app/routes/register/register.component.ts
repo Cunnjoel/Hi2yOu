@@ -16,12 +16,10 @@ export class RegisterComponent implements OnInit {
   registerUser()
   {
     let formData : FormData = new FormData();
-    this.userService.create(formData).subscribe(reponseBody=>
+    this.userService.create(formData).subscribe(responseBody=>
       {
-          this.userService.create(this.registerUser).subscribe(responseBody=>{
-            this.userService.create = responseBody;
-            this.router.navigate(['dashboard'])
-            });
+          //this.userService.create = responseBody;
+          this.router.navigate(['/profile'])
       });
   }
 }

@@ -51,7 +51,7 @@ export class ProfilecreateupdateComponent implements OnInit {
           this.newProfile.pictureUrl = "https://" + reponseBody.fileUrl;
           this.profileService.updateProfile(this.newProfile).subscribe(responseBody=>{
             this.profileService.currentUserProfile = responseBody;
-            this.router.navigate(['/viewprofile/' + this.profileService.currentUserProfile.id])
+            this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
             });
       });
   }
