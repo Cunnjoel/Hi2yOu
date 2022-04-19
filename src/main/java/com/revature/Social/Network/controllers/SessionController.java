@@ -29,7 +29,7 @@ public class SessionController {
     @GetMapping
     public ResponseEntity<User> checkSession(HttpSession httpSession){
         User user = (User) httpSession.getAttribute("sessionVar");
-
+        System.out.println(user);
         if(user == null){
             return ResponseEntity.status(HttpStatus.OK).body(null);
         }

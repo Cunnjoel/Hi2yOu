@@ -29,7 +29,6 @@ export class ProfileviewComponent implements OnInit {
 
   getProfileById(id : number)
   {
-    console.log(this.profileService.currentUserProfile);
     this.profileService.getProfileById(id).subscribe(responseBody=>{
     this.profileViewing = responseBody;
     });
@@ -37,7 +36,6 @@ export class ProfileviewComponent implements OnInit {
 
   getProfileByUserId(userId : number)
   {
-    console.log(this.profileService.currentUserProfile);
     this.profileService.getProfileByUserId(userId).subscribe(responseBody=>{
     this.profileViewing = responseBody;
     });

@@ -3,6 +3,7 @@ package com.revature.Social.Network.controllers;
 import com.revature.Social.Network.models.Picture;
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.services.ProfileService;
+import com.revature.Social.Network.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,10 +19,13 @@ public class ProfileController
 
     ProfileService profileService;
 
+    UserService userService;
+
     @Autowired
-    public ProfileController(ProfileService profileService)
+    public ProfileController(ProfileService profileService, UserService userService)
     {
         this.profileService = profileService;
+        this.userService = userService;
     }
 
     @PostMapping
@@ -39,7 +43,7 @@ public class ProfileController
     @GetMapping("userProfile/{userId}")
     public Profile getProfileByUser(@PathVariable Integer userId)
     {
-        return profileService.getUserProfile(userId);
+        return profileService.getUserProfile(userService.getUserById(userId));
     }
 
     @PatchMapping

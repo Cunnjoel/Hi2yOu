@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { ProfileService } from 'src/app/services/profile.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-profilecreateupdate',
@@ -14,7 +15,7 @@ export class ProfilecreateupdateComponent implements OnInit {
   newProfile : Profile = <Profile>{};
   currentProfile : Profile = <Profile>{};
 
-  constructor(private profileService : ProfileService, private router : Router) { }
+  constructor(private profileService : ProfileService, private router : Router, private sessionService : SessionService) { }
 
   ngOnInit(): void {
     
@@ -30,10 +31,14 @@ export class ProfilecreateupdateComponent implements OnInit {
         {
           this.newProfile.pictureUrl = "https://" + reponseBody.fileUrl;
         }
-          this.profileService.createProfile(this.newProfile).subscribe(responseBody=>{
-            this.profileService.currentUserProfile = responseBody;
-            this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
-            });
+        this.sessionService.checkSession().subscribe(responseBody=>
+          {
+            this.newProfile.user = responseBody;
+            this.profileService.createProfile(this.newProfile).subscribe(responseBody=>{
+              this.profileService.currentUserProfile = responseBody;
+              this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
+              });
+          });
       });
   }
 
