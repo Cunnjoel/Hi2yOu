@@ -14,8 +14,17 @@ export class ProfileviewComponent implements OnInit {
   constructor(private profileService : ProfileService , private router : Router) { }
 
   ngOnInit(): void {
-    let id : number = +this.router.url.slice(13);
-    this.getProfileById(id);
+    let url : string = this.router.url.slice(13);
+    if (url.startsWith("user"))
+    {
+        let userid : number = +url.slice(6);
+        this.getProfileByUserId(userid)
+    }
+    else
+    {
+      let id : number = +url;
+      this.getProfileById(id);
+    }
   }
 
   getProfileById(id : number)
