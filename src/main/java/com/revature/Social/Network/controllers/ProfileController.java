@@ -19,13 +19,10 @@ public class ProfileController
 
     ProfileService profileService;
 
-    UserService userService;
-
     @Autowired
-    public ProfileController(ProfileService profileService, UserService userService)
+    public ProfileController(ProfileService profileService)
     {
         this.profileService = profileService;
-        this.userService = userService;
     }
 
     @PostMapping
@@ -43,7 +40,7 @@ public class ProfileController
     @GetMapping("userProfile/{userId}")
     public Profile getProfileByUser(@PathVariable Integer userId)
     {
-        return profileService.getUserProfile(userService.getUserById(userId));
+        return profileService.getUserProfile(userId);
     }
 
     @PatchMapping

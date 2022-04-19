@@ -17,7 +17,7 @@ export class ProfileviewComponent implements OnInit {
     let url : string = this.router.url.slice(13);
     if (url.startsWith("user"))
     {
-        let userid : number = +url.slice(6);
+        let userid : number = +url.slice(5);
         this.getProfileByUserId(userid)
     }
     else
