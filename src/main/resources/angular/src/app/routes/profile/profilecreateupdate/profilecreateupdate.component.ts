@@ -12,10 +12,12 @@ export class ProfilecreateupdateComponent implements OnInit {
 
   file : File = <File>{};
   newProfile : Profile = <Profile>{};
+  currentProfile : Profile = <Profile>{};
 
   constructor(private profileService : ProfileService, private router : Router) { }
 
   ngOnInit(): void {
+    
   }
 
   createProfile()
@@ -24,10 +26,13 @@ export class ProfilecreateupdateComponent implements OnInit {
     formData.append('file', this.file);
     this.profileService.uploadProfilePic(formData).subscribe(reponseBody=>
       {
+        if (reponseBody != null)
+        {
           this.newProfile.pictureUrl = "https://" + reponseBody.fileUrl;
+        }
           this.profileService.createProfile(this.newProfile).subscribe(responseBody=>{
             this.profileService.currentUserProfile = responseBody;
-            this.router.navigate(['/viewprofile'])
+            this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
             });
       });
   }
@@ -46,7 +51,7 @@ export class ProfilecreateupdateComponent implements OnInit {
           this.newProfile.pictureUrl = "https://" + reponseBody.fileUrl;
           this.profileService.updateProfile(this.newProfile).subscribe(responseBody=>{
             this.profileService.currentUserProfile = responseBody;
-            this.router.navigate(['/viewprofile'])
+            this.router.navigate(['/viewprofile/' + this.profileService.currentUserProfile.id])
             });
       });
   }
