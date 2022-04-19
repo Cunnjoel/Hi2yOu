@@ -9,7 +9,7 @@ export class SessionService {
 
   constructor(private httpCli : HttpClient) { }
 
-  login(userId: string,username: string){
+  login(userId: number,username: string){
     return this.httpCli.post<any>(`http://localhost:9000/session`, {
       "id": userId,
       "username": username
