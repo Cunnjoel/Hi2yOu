@@ -9,5 +9,5 @@ import lombok.NoArgsConstructor;
 @Data
 public class Picture
 {
-    private String fileurl;
+    private String fileUrl;
 }

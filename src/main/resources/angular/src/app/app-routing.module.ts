@@ -10,8 +10,8 @@ const routes: Routes = [
   {path: "", component: LoginComponent},
   {path: "register", component: RegisterComponent},
   {path: "profile", component: ProfilecreateupdateComponent},
-  {path: "viewprofile", component : ProfileviewComponent},
   {path: "dashboard", component: DashboardcreatepostComponent},
+  {path: 'viewprofile/:id', component : ProfileviewComponent},
   {path: "**", redirectTo: ""}
 ];
 
