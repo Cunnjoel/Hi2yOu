@@ -9,6 +9,6 @@ public interface ProfileRepo
     Profile getProfileById(Integer profileId);
     Integer createProfile(Profile profile);
     void updateProfile(Profile profile);
-    Profile getProfileByUserId(User userId);
+    Profile getProfileByUserId(Integer userId);
     String uploadProfilePic(MultipartFile file);
 }

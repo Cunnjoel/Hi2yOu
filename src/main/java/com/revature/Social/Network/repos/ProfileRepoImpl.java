@@ -62,10 +62,10 @@ public class ProfileRepoImpl implements ProfileRepo
      * @return profile object from the database
      */
     @Override
-    public Profile getProfileByUserId(User user)
+    public Profile getProfileByUserId(Integer userId)
     {
         Session session = em.unwrap(Session.class);
-        return session.createQuery("from Profile where user = '" + user + "'",Profile.class).getSingleResult();
+        return session.createQuery("from Profile where user.id = '" + userId + "'",Profile.class).getSingleResult();
     }
 
     /**
