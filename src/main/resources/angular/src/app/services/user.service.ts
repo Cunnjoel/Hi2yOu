@@ -1,37 +1,38 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { User } from '../models/User';
 
 
-const baseUrl = 'http://localhost:4200/';
+
+const baseUrl = 'http://localhost:9000/user';
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private httpCli : HttpClient) { }
 
-  getAllUsers(): Observable<User[]>{
-    return this.http.get<User[]>(baseUrl);
+  getAllUsers(){
+    return this.httpCli.get<User[]>(baseUrl);
   }
   
-  get(id: any): Observable<User> {
-    return this.http.get(`${baseUrl}/${id}`);
+  get(id: any){
+    return this.httpCli.get<User>(`${baseUrl}/${id}`);
   }
 
-  create(data : any): Observable<any> {
-    return this.http.post(baseUrl, data);
+  create(data : User){
+    return this.httpCli.post<User>(baseUrl, data);
   }
 
-  update(id: any, data: any): Observable<any>  {
-    return this.http.put(`${baseUrl}/${id}`, data)
+  update(id: any, data: any){
+    return this.httpCli.put(`${baseUrl}/${id}`, data)
   }
 
-  getByUsername(username: any): Observable<User>{
-    return this.http.get<username>(`${baseUrl}?username=${username}`);
+  getByUsername(username: any){
+    return this.httpCli.get<User>(`${baseUrl}?username=${username}`);
   }
 
-  deleteUser(): Observable<any> {
-    return this.http.delete(baseUrl);
+  deleteUser(){
+    return this.httpCli.delete(baseUrl);
   }
 }
