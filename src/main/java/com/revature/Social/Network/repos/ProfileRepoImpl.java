@@ -1,6 +1,7 @@
 package com.revature.Social.Network.repos;
 
 import com.revature.Social.Network.models.Profile;
+import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.utils.S3Utility;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,14 +58,14 @@ public class ProfileRepoImpl implements ProfileRepo
 
     /**
      * <h2>This method gets a profile from the database given a users id</h2>
-     * @param userId number associated with the user who's profile we want
+     * @param user user object associated with the profile we want
      * @return profile object from the database
      */
     @Override
-    public Profile getProfileByUserId(Integer userId)
+    public Profile getProfileByUserId(User user)
     {
         Session session = em.unwrap(Session.class);
-        return session.createQuery("from Profile where user = '" + userId + "'",Profile.class).getSingleResult();
+        return session.createQuery("from Profile where user = '" + user + "'",Profile.class).getSingleResult();
     }
 
     /**

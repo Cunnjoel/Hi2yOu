@@ -3,6 +3,7 @@ package com.revature.Social.Network.controllers;
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.services.ProfileService;
+import com.revature.Social.Network.services.UserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
@@ -17,9 +18,11 @@ class ProfileControllerTest
 
     private ProfileService profileService = Mockito.mock(ProfileService.class);
 
+    private UserService userService = Mockito.mock(UserService.class);
+
     public ProfileControllerTest()
     {
-        this.profileController = new ProfileController(profileService);
+        this.profileController = new ProfileController(profileService, userService);
     }
 
     @Test
@@ -47,9 +50,10 @@ class ProfileControllerTest
     @Test
     void getProfileByUser()
     {
-        Profile expectedProfile = profileController.getProfileByUser(1);
+        User newUser = new User();
+        Profile expectedProfile = profileController.getProfileByUser(0);
 
-        Profile actaulProfile = profileService.getUserProfile(1);
+        Profile actaulProfile = profileService.getUserProfile(newUser);
 
         Assertions.assertEquals(expectedProfile,actaulProfile);
     }
