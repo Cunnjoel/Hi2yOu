@@ -2,8 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Post } from '../models/Post'
-import { Timestamp } from "rxjs";
-import { FormBuilder, FormGroup } from '@angular/forms';
 
 
 @Injectable({
@@ -11,29 +9,17 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class PostService {
 
-  constructor(private httpCli : HttpClient, public fb : FormBuilder) { }
+  makePost : Post = <Post>{}
 
-  createPost(id : number,
-    message : string,
-    picture : string,
-    users : Array<object>,
-    date : Timestamp<Date>,
-    user : {
-        id : number;
-        username : string;
-        password : string;
-        email : string
-    }){
-    return this.httpCli.post<any>(`http://localhost:9000/post`, {
-      "message": message,
-      "picture": picture,
-      "users": users,
-      "date": date,
-      "user": user
-    });
+  constructor(private httpCli : HttpClient) { }
+
+  createPost(post : Post){
+    return this.httpCli.post<Post>(`http://localhost:9000/post`,post);
+    console.log(post)
   }
 
   getPostByUserId(userId : number){
+  console.log(userId)
     return this.httpCli.get<Post>(`http://localhost:9000/post/${userId}`);
   }
 
@@ -56,10 +42,9 @@ export class PostService {
     return this.httpCli.get<Post>(`http://localhost:9000/post/${id}/likes`);
   }
 
-  uploadProfilePic(multipartFile: FormGroup){
-    return this.httpCli.post<any>(`http://localhost:9000/upload`, {
-      "multipartfile": multipartFile
-    });
+  uploadPostPic(image : FormData){
+    return this.httpCli.post<any>(`http://localhost:9000/post/upload`, image)
+    
   }
 
 }

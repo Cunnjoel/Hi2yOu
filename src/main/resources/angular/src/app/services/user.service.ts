@@ -1,11 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { User } from '../models/User';
 
 
 
-const baseUrl = 'http://localhost:9000/';
+const baseUrl = 'http://localhost:9000/user';
 @Injectable({
   providedIn: 'root'
 })
@@ -13,27 +12,27 @@ export class UserService {
 
   constructor(private httpCli : HttpClient) { }
 
-  getAllUsers(): Observable<User[]>{
+  getAllUsers(){
     return this.httpCli.get<User[]>(baseUrl);
   }
   
-  get(id: any): Observable<User> {
+  get(id: any){
     return this.httpCli.get<User>(`${baseUrl}/${id}`);
   }
 
-  create(data : any): Observable<any> {
-    return this.httpCli.post(baseUrl, data);
+  create(data : User){
+    return this.httpCli.post<User>(baseUrl, data);
   }
 
-  update(id: any, data: any): Observable<any>  {
+  update(id: any, data: any){
     return this.httpCli.put(`${baseUrl}/${id}`, data)
   }
 
-  getByUsername(username: any): Observable<User>{
-    return this.httpCli.get<User>(`${baseUrl}?username=${username}`);
+  getByUsername(username: string){
+    return this.httpCli.get<User>(`${baseUrl}/${username}`);
   }
 
-  deleteUser(): Observable<any> {
+  deleteUser(){
     return this.httpCli.delete(baseUrl);
   }
 }
