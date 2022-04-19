@@ -11,15 +11,13 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
-  incorrect : boolean = false
-  
 
   constructor(private userService : UserService, private router : Router) { }
 
   ngOnInit(): void {
     var loggedIn : any = localStorage.getItem("id)");
     if(loggedIn !== undefined || loggedIn !== undefined){
-      this.router.navigate(['dashboard']);
+      this.router.navigate(['login']);
     }
   }
   onSubmit(form:NgForm) : void{
@@ -28,11 +26,11 @@ export class LoginComponent implements OnInit {
   }
 
 userLogin(form : NgForm) : void{
+  
   let user : User = <User> {};
-
-    // this.userService.get(user).subscribe(responseBody =>{
-    //  this.user = responseBody
-    //     this.router.navigate(['/dashboard'])
-    //   })
+    this.userService.get(user).subscribe(responseBody =>{
+    
+        this.router.navigate(['/dashboard'])
+      })
   }
 }

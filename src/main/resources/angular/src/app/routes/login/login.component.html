@@ -1,6 +1,17 @@
 <div>
-    <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
+    <form>
+        <div id="title">Login page</div>
+        <div>
+            <!-- <div>
+               Username:
+                <input type="text" placeholder="Username" [(ngModel)]="new.firstName" id="username" [ngModelOptions]="{standalone: true}">
+            </div>
+            <div>
+                Middle Initial:
+                <input type="text" placeholder="Password" [(ngModel)]="profile.password" id="password" [ngModelOptions]="{standalone: true}">
+            </div> -->
+    <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <h1 class="h3 mb-3 font-weight-normal">Welcome!!Please sign in</h1>
         <h5 *ngIf="incorrect === true">Incorrect Username/Password</h5>
         <label for="username" class="sr-only">Username</label>
         <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus ngModel>
@@ -10,5 +21,5 @@
         <br>
         <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
         <br>
-    </form>
+    </form> -->
 </div>
