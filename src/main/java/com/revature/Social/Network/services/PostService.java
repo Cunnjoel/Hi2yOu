@@ -41,7 +41,7 @@ public class PostService {
 
     public List<User> getAllLikes(Integer postId){ return this.postRepo.getAllLikes(postId); }
 
-    public String uploadProfilePic(MultipartFile file)
+    public String uploadPostPic(MultipartFile file)
     {
         return this.postRepo.uploadProfilePic(file);
     }

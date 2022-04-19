@@ -56,8 +56,8 @@ public class PostController {
     public List<User> getAllLikes(@PathVariable Integer postId) { return this.postService.getAllLikes(postId); }
 
     @PostMapping("upload")
-    public String uploadProfilePic(@RequestParam("file") MultipartFile file)
+    public String uploadPostPic(@RequestParam("file") MultipartFile file)
     {
-        return this.postService.uploadProfilePic(file);
+        return this.postService.uploadPostPic(file);
     }
 }

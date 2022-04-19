@@ -30,9 +30,9 @@ public class PostRepoImlp implements PostRepo{
         Session session = em.unwrap(Session.class);
 
 
-        if (post.getPicture() != null)
+        if (post.getPictureURL() != null)
         {
-            post.setPicture(s3Utility.bucketName + s3Utility.picturerUrl + post.getPicture());
+            post.setPictureURL(s3Utility.bucketName + s3Utility.picturerUrl + post.getPictureURL());
         }
         session.save(post);
 
@@ -115,6 +115,6 @@ public class PostRepoImlp implements PostRepo{
             System.out.println(e.getStackTrace());
             return "Filed not uploaded!";
         }
-        return "Filed uploaded Successfully";
+        return s3Utility.bucketName + s3Utility.picturerUrl + file.getOriginalFilename();
     }
 }
