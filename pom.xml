@@ -41,9 +41,6 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>picture</scope>
 		</dependency>
-
-
-
 		<dependency>
 			<groupId>org.junit.jupiter</groupId>
 			<artifactId>junit-jupiter</artifactId>
