@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
+import { SessionService } from 'src/app/services/session.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -9,19 +11,21 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService : UserService, private router: Router ) { }
+  user: User = <User>{};
+
+  constructor(private userService : UserService, private router: Router, private sessionService : SessionService) { }
 
   ngOnInit(): void {
   }
   registerUser()
   {
-    let formData : FormData = new FormData();
-    this.userService.create(formData).subscribe(reponseBody=>
+    
+    this.userService.create(this.user).subscribe(responseBody=>
       {
-          this.userService.create(this.registerUser).subscribe(responseBody=>{
-            this.userService.create = responseBody;
-            this.router.navigate(['dashboard'])
-            });
+        let newUser : User = responseBody
+        this.sessionService.login(newUser).subscribe(responseBody=>{
+          this.router.navigate(['/profile'])
+        })
       });
   }
 }

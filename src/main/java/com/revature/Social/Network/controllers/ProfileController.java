@@ -3,6 +3,7 @@ package com.revature.Social.Network.controllers;
 import com.revature.Social.Network.models.Picture;
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.services.ProfileService;
+import com.revature.Social.Network.services.UserService;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;

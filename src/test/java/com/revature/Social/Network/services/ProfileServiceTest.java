@@ -45,12 +45,11 @@ class ProfileServiceTest
     @Test
     void getUserProfile()
     {
-        Integer userId = 1;
         User newUser = new User();
         Profile expectedProfile = new Profile(1,null,newUser,"Kevin",null,"Childs","7/05/1985","Houston","Texas",null);
-        Mockito.when(profileRepo.getProfileByUserId(userId)).thenReturn(expectedProfile);
+        Mockito.when(profileRepo.getProfileByUserId(1)).thenReturn(expectedProfile);
 
-        Profile actualProfile = profileService.getUserProfile(userId);
+        Profile actualProfile = profileService.getUserProfile(1);
 
         assertEquals(expectedProfile,actualProfile);
     }

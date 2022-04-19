@@ -20,7 +20,7 @@ public class Profile
     @Column(nullable = true)
     private String pictureUrl;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "userid", referencedColumnName = "userId")
     private User user;
 

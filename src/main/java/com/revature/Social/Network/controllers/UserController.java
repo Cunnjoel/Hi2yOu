@@ -44,7 +44,6 @@ public class UserController {
 
 
     @GetMapping("{username}")
-
     public User getUserGivenUsername(@PathVariable String username){
         return this.userService.getUserGivenUsername(username);
     }
