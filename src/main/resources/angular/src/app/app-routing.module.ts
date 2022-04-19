@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DashboardComponent } from './routes/dashboard/dashboard.component';
 import { LoginComponent } from './routes/login/login.component';
 import { ProfilecreateupdateComponent } from './routes/profile/profilecreateupdate/profilecreateupdate.component';
 import { ProfileviewComponent } from './routes/profile/profileview/profileview.component';
 import { RegisterComponent } from './routes/register/register.component';
+import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatepost/dashboardcreatepost.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -12,7 +12,7 @@ const routes: Routes = [
   {path: 'profile', component: ProfilecreateupdateComponent},
   {path: 'viewprofile/:id', component : ProfileviewComponent},
   {path: 'viewprofile/user/:id', component : ProfileviewComponent},
-  {path: 'dashboard', component: DashboardComponent},
+  {path: 'dashboard', component: DashboardcreatepostComponent},
   {path: "**", redirectTo: ""}
 ];
 

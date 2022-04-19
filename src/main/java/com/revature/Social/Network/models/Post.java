@@ -26,7 +26,7 @@ public class Post {
     @Column
     private String message;
     @Column
-    private String picture;
+    private String pictureURL;
 
     @OneToMany
     private List<User> users = new ArrayList<>();
