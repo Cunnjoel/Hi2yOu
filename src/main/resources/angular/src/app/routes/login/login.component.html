@@ -1,25 +1,13 @@
 <div>
     <form>
-        <div id="title">Login page</div>
-        <div>
-            <!-- <div>
-               Username:
-                <input type="text" placeholder="Username" [(ngModel)]="new.firstName" id="username" [ngModelOptions]="{standalone: true}">
-            </div>
-            <div>
-                Middle Initial:
-                <input type="text" placeholder="Password" [(ngModel)]="profile.password" id="password" [ngModelOptions]="{standalone: true}">
-            </div> -->
-    <!-- <form (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <h1 class="h3 mb-3 font-weight-normal">Welcome!!Please sign in</h1>
-        <h5 *ngIf="incorrect === true">Incorrect Username/Password</h5>
+        <h1 class="h3 mb-3 font-weight-normal">Login!</h1>
         <label for="username" class="sr-only">Username</label>
-        <input type="text" name="username" id="username" class="form-control" placeholder="Username" required autofocus ngModel>
+        <input type="text" name="username" id="username" class="form-control" placeholder="Username" [(ngModel)]="user.username"[ngModelOptions]="{standalone: true}">
         <br>
         <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required ngModel>
+        <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password"[(ngModel)]="user.password"[ngModelOptions]="{standalone: true}" >
         <br>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign in</button>
+        <button class="btn btn-primary" (click)="userLogin()">Login!</button>
         <br>
-    </form> -->
+        </form>
 </div>
