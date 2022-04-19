@@ -23,7 +23,7 @@ export class RegisterComponent implements OnInit {
     this.userService.create(this.user).subscribe(responseBody=>
       {
         let newUser : User = responseBody
-        this.sessionService.login(newUser.userId, newUser.username).subscribe(responseBody=>{
+        this.sessionService.login(newUser).subscribe(responseBody=>{
           this.router.navigate(['/profile'])
         })
       });

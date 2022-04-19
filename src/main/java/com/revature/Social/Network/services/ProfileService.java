@@ -1,6 +1,7 @@
 package com.revature.Social.Network.services;
 
 import com.revature.Social.Network.models.Profile;
+import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.ProfileRepo;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,9 +34,9 @@ public class ProfileService
         return this.profileRepo.getProfileById(profileId);
     }
 
-    public Profile getUserProfile(Integer userId)
+    public Profile getUserProfile(User user)
     {
-        return this.profileRepo.getProfileByUserId(userId);
+        return this.profileRepo.getProfileByUserId(user);
     }
 
     public Profile updateProfile(Profile profile)
