@@ -49,9 +49,18 @@ public class ProfileController
     }
 
     @PostMapping("upload")
-    public Picture uploadProfilePic(@RequestParam("file")MultipartFile file)
+    public Picture uploadProfilePic(@RequestParam(value = "file",required = false)MultipartFile file)
     {
-        Picture picture = new Picture(this.profileService.uploadProfilePic(file));
+        Picture picture;
+        if (file != null)
+        {
+            System.out.println(file.getOriginalFilename());
+            picture = new Picture(this.profileService.uploadProfilePic(file));
+        }
+        else
+        {
+            picture = null;
+        }
         return picture;
     }
 }

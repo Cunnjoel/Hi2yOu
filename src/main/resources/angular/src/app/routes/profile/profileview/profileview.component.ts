@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -10,10 +11,11 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class ProfileviewComponent implements OnInit {
 
   profileViewing : Profile = <Profile>{};
-  constructor(private profileService : ProfileService) { }
+  constructor(private profileService : ProfileService , private router : Router) { }
 
   ngOnInit(): void {
-    this.getProfileById(this.profileService.currentUserProfile.id);
+    let id : number = +this.router.url.slice(13);
+    this.getProfileById(id);
   }
 
   getProfileById(id : number)

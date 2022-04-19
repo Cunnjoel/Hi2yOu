@@ -1,0 +1,35 @@
+.center
+{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.center form
+{
+    margin-top: 20px;
+    margin-right: 200px;
+    text-align: center;
+}
+.center form div
+{
+    margin-top: 20px;
+}
+.center form #title
+{
+    font-size: 50px;
+    text-decoration: underline;
+}
+.center form button
+{
+    margin-top: 20px;
+}
+.center form #profilePic
+{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.center form div
+{
+    font-size: 30px;
+}
