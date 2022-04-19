@@ -18,11 +18,9 @@ class ProfileControllerTest
 
     private ProfileService profileService = Mockito.mock(ProfileService.class);
 
-    private UserService userService = Mockito.mock(UserService.class);
-
     public ProfileControllerTest()
     {
-        this.profileController = new ProfileController(profileService, userService);
+        this.profileController = new ProfileController(profileService);
     }
 
     @Test
@@ -53,7 +51,7 @@ class ProfileControllerTest
         User newUser = new User();
         Profile expectedProfile = profileController.getProfileByUser(0);
 
-        Profile actaulProfile = profileService.getUserProfile(newUser);
+        Profile actaulProfile = profileService.getUserProfile(0);
 
         Assertions.assertEquals(expectedProfile,actaulProfile);
     }

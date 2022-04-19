@@ -34,9 +34,9 @@ public class ProfileService
         return this.profileRepo.getProfileById(profileId);
     }
 
-    public Profile getUserProfile(User user)
+    public Profile getUserProfile(Integer userId)
     {
-        return this.profileRepo.getProfileByUserId(user);
+        return this.profileRepo.getProfileByUserId(userId);
     }
 
     public Profile updateProfile(Profile profile)
