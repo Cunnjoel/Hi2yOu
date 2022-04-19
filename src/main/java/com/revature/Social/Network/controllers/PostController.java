@@ -1,5 +1,6 @@
 package com.revature.Social.Network.controllers;
 
+import com.revature.Social.Network.models.Picture;
 import com.revature.Social.Network.models.Post;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.PostRepo;
@@ -56,8 +57,18 @@ public class PostController {
     public List<User> getAllLikes(@PathVariable Integer postId) { return this.postService.getAllLikes(postId); }
 
     @PostMapping("upload")
-    public String uploadPostPic(@RequestParam("file") MultipartFile file)
+    public Picture uploadPostPic(@RequestParam(value = "file",required = false) MultipartFile file)
     {
-        return this.postService.uploadPostPic(file);
+        Picture picture;
+        if (file != null)
+        {
+            System.out.println(file.getOriginalFilename());
+            picture = new Picture(this.postService.uploadPostPic(file));
+        }
+        else
+        {
+            picture = null;
+        }
+        return picture;
     }
 }

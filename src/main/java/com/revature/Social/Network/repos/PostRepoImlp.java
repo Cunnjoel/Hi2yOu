@@ -28,12 +28,6 @@ public class PostRepoImlp implements PostRepo{
     @Override
     public void createPost(Post post) {
         Session session = em.unwrap(Session.class);
-
-
-        if (post.getPictureURL() != null)
-        {
-            post.setPictureURL(s3Utility.bucketName + s3Utility.picturerUrl + post.getPictureURL());
-        }
         session.save(post);
 
     }

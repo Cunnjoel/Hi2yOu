@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 import { PostService } from 'src/app/services/post.service';
 
@@ -9,7 +9,6 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./dashboardcreatepost.component.css']
 })
 export class DashboardcreatepostComponent implements OnInit {
-
   newPost: Post = <Post>{};
   file: File = <File>{};
 
@@ -17,8 +16,7 @@ export class DashboardcreatepostComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
+  
   createPost() {
     this.newPost.user = {
       "userId": 1,
@@ -26,25 +24,28 @@ export class DashboardcreatepostComponent implements OnInit {
       "password": "pass123",
       "email": "@email.com"
     };
-    let picUrl: string = "";
     let formData: FormData = new FormData();
     formData.append('file', this.file);
     
-    this.postService.uploadPostPic(formData).subscribe(reponseBody => {
-      console.log(reponseBody)
-      picUrl = reponseBody.fileurl;
-      console.log(picUrl);
+    this.postService.uploadPostPic(formData).subscribe(responseBody => {
+      if(responseBody != null){
+        this.newPost.pictureURL = "https://"+ responseBody.fileUrl;
+      }
+      this.postService.createPost(this.newPost).subscribe(responseBody => {
+        this.postService.makePost = responseBody;
+
+        this.newPost.message = ' ';
+        
+      });
     });
-    
-    this.newPost.pictureURL = picUrl
-    this.postService.createPost(this.newPost).subscribe(reponseBody => {
-      
-      this.postService.makePost = reponseBody;
-    });
+
+
   }
   createPicturePost(e: any) {
     this.file = e.target.files[0];
   }
 }
+
+
 
 
