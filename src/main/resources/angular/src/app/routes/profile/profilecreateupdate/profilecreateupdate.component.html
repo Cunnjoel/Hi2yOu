@@ -1,12 +1,39 @@
 <div class="container center">
-    Create/Update Profile Page!
-    <input type="file" (change)="addFile($event)"/>
-    <input type="text" placeholder="First Name" [(ngModel)]="newProfile.firstName">
-    <input type="text" placeholder="Middle Initial" [(ngModel)]="newProfile.middleInit">
-    <input type="text" placeholder="Last Name" [(ngModel)]="newProfile.lastName">
-    <input type="text" placeholder="Birthday" [(ngModel)]="newProfile.birthday">
-    <input type="text" placeholder="City" [(ngModel)]="newProfile.city">
-    <input type="text" placeholder="State" [(ngModel)]="newProfile.state">
-    <input type="text" placeholder="About Me" [ngModel]="newProfile.aboutMe">
-    <button (click)="createProfile()">Create Profile</button>
+    <form>
+        <div id="title">Create/Update Profile Page</div>
+        <div>
+            Profile Picture:
+            <input type="file" (change)="addFile($event)" id="fileInput"/>
+        </div>
+        <div>
+            First Name:
+            <input type="text" placeholder="First Name" [(ngModel)]="newProfile.firstName" id="firstName" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+            Middle Initial:
+            <input type="text" placeholder="Middle Initial" [(ngModel)]="newProfile.middleInit" id="middleInit" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+            Last name:
+            <input type="text" placeholder="Last Name" [(ngModel)]="newProfile.lastName" id="lastName" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+            Birthday:
+            <input type="text" placeholder="Birthday" [(ngModel)]="newProfile.birthday" id="birthday" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+            City:
+            <input type="text" placeholder="City" [(ngModel)]="newProfile.city" id="citys"[ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+            State:
+            <input type="text" placeholder="State" [(ngModel)]="newProfile.state" id="state" [ngModelOptions]="{standalone: true}">
+        </div>
+        <div>
+            About You:
+            <textarea rows="20" cols="50" [(ngModel)]="newProfile.aboutMe" id="aboutMe" [ngModelOptions]="{standalone: true}"></textarea>
+        </div>
+        <button (click)="createProfile()" id="createButtn">Create Profile</button>
+        <button (click)="updateProfile()" id="updateButton">Update Profile</button>
+    </form>
 </div>

@@ -1,12 +1,15 @@
 <div class="container center">
-    Profile View Page!
-    <img [src]="profileViewing.pictureUrl" alt="">
-    <div>{{profileViewing.id}}</div>
-    <div>{{profileViewing.firstName}}</div>
-    <div>{{profileViewing.middleInit}}</div>
-    <div>{{profileViewing.lastName}}</div>
-    <div>{{profileViewing.birthday}}</div>
-    <div>{{profileViewing.city}}</div>
-    <div>{{profileViewing.state}}</div>
-    <div>{{profileViewing.aboutMe}}</div>
+    <form> 
+        <div id="title">Profile View Page</div>
+        <img [src]="profileViewing.pictureUrl" alt="Profile Pics" id="profilePic">
+        <div>Profile Id: {{profileViewing.id}}</div>
+        <div>Profile Picture Url: {{profileViewing.pictureUrl}}</div>
+        <div>First Name: {{profileViewing.firstName}}</div>
+        <div>Middle Init: {{profileViewing.middleInit}}</div>
+        <div>Last Name: {{profileViewing.lastName}}</div>
+        <div>Birthday: {{profileViewing.birthday}}</div>
+        <div>City: {{profileViewing.city}}</div>
+        <div>State: {{profileViewing.state}}</div>
+        <div>About Me: {{profileViewing.aboutMe}}</div>
+    </form>
 </div>
