@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Post } from 'src/app/models/Post';
+
 import { PostService } from 'src/app/services/post.service';
 
 @Component({
@@ -14,12 +15,12 @@ export class ViewallpostsComponent implements OnInit {
 
   ngOnInit(): void {
 
-
   }
   viewAllPosts(){
       this.postService.getAllPosts().subscribe(responseBody=>{
         this.postViewing = responseBody;
-      });
-  }
-
+       });
+    }
 }
+
+

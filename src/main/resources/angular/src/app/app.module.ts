@@ -10,6 +10,7 @@ import { ProfileviewComponent } from './routes/profile/profileview/profileview.c
 import { ProfilecreateComponent } from './routes/profile/profilecreate/profilecreate.component';
 import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatepost/dashboardcreatepost.component';
 import { UpdateprofileComponent } from './routes/profile/updateprofile/updateprofile.component';
+import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,8 @@ import { UpdateprofileComponent } from './routes/profile/updateprofile/updatepro
     ProfilecreateComponent,
     ProfileviewComponent,
     DashboardcreatepostComponent,
-    UpdateprofileComponent
-    
+    UpdateprofileComponent,
+    ViewallpostsComponent
   ],
   imports: [
     BrowserModule,
