@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -19,13 +20,14 @@ public class SessionController {
     Logger logger = Logger.getLogger(SessionController.class);
 
     @Autowired
-    private UserService userService;
+    private PasswordEncoder passwordEncoder;
 
     @PostMapping
     public ResponseEntity<User> login(HttpSession httpSession, @RequestBody User user){
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         httpSession.setAttribute("sessionVar", user);
-        userService.get(passwordEncoder.encode(user.getPassword()));
         return ResponseEntity.status(HttpStatus.OK).body(user);
+
     }
 
     @DeleteMapping

@@ -17,7 +17,7 @@ public class UserService {
     private UserRepo userRepo;
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    public PasswordEncoder passwordEncoder;
 
     public List<User> getAll(){
         return userRepo.getAll();

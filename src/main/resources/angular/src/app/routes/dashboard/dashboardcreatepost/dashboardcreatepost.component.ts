@@ -2,6 +2,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 import { PostService } from 'src/app/services/post.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-dashboardcreatepost',
@@ -12,7 +13,7 @@ export class DashboardcreatepostComponent implements OnInit {
   newPost: Post = <Post>{};
   file: File = <File>{};
 
-  constructor(private postService: PostService) { }
+  constructor(private postService: PostService, private sessionService: SessionService) { }
 
   ngOnInit(): void {
   }
@@ -31,12 +32,16 @@ export class DashboardcreatepostComponent implements OnInit {
       if(responseBody != null){
         this.newPost.pictureURL = "https://"+ responseBody.fileUrl;
       }
-      this.postService.createPost(this.newPost).subscribe(responseBody => {
-        this.postService.makePost = responseBody;
-
-        this.newPost.message = ' ';
-        
+      this.sessionService.checkSession().subscribe(responseBody=>{
+        this.newPost.user = responseBody;
+        this.postService.createPost(this.newPost).subscribe(responseBody => {
+          this.postService.makePost = responseBody;
+  
+          this.newPost.message = ' ';
+          
+        });
       });
+      
     });
 
 
