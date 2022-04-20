@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
       {
         let newUser : User = responseBody
         this.sessionService.login(newUser).subscribe(responseBody=>{
-          this.router.navigate(['/profile'])
+          this.router.navigate(['/createprofile'])
         })
       });
   }

@@ -13,5 +13,6 @@
         <div>City: {{profileViewing.city}}</div>
         <div>State: {{profileViewing.state}}</div>
         <div>About Me: {{profileViewing.aboutMe}}</div>
+        <button *ngIf="buttonOn" (click)="updateProfile()" id="updatebutton">Update Profile</button>
     </form>
 </div>

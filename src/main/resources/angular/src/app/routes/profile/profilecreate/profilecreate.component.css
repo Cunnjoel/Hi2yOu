@@ -23,6 +23,16 @@
 {
     margin-top: 20px;
 }
+.center form #profilePic
+{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}
+.center form div
+{
+    font-size: 30px;
+}
 .center form #aboutMe
 {
     width: 100%;
