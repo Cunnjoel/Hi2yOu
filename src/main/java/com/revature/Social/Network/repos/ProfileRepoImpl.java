@@ -58,7 +58,7 @@ public class ProfileRepoImpl implements ProfileRepo
 
     /**
      * <h2>This method gets a profile from the database given a users id</h2>
-     * @param user user object associated with the profile we want
+     * @param userId user id associated with the users who profile we want
      * @return profile object from the database
      */
     @Override
