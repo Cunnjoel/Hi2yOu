@@ -39,16 +39,20 @@ public class UserService {
     }
     public void deleteUser(Integer userId){
 
-
         userRepo.deleteUser(userId);
     }
     public User getUserGivenUsername(String username){
+
         return userRepo.getUserByUsername(username);
     }
 
     public User getUserById(Integer userId)
     {
         return userRepo.getOne(userId);
+    }
+    public User getUserGivenEmail(String email){
+
+        return userRepo.getUserGivenEmail(email);
     }
 }
 

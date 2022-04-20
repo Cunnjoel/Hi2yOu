@@ -23,6 +23,7 @@ userLogin(){
   
     this.userService.getByUsername(this.user.username).subscribe(responseBody =>{
     let loginUser : User = responseBody 
+    console.log(loginUser)
     if (loginUser !=null)
     {this.sessionService.login(loginUser).subscribe(responseBody=>{
       this.router.navigate(['/dashboard'])
