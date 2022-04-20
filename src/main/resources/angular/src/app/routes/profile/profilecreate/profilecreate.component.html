@@ -4,6 +4,7 @@
         <div>
             Profile Picture:
             <input type="file" (change)="addFile($event)" id="fileInput"/>
+            <img [src]="newProfile.pictureUrl" alt="Profile Pics" id="profilePic">
         </div>
         <div>
             First Name:
@@ -34,6 +35,5 @@
             <textarea rows="20" cols="50" [(ngModel)]="newProfile.aboutMe" id="aboutMe" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         <button (click)="createProfile()" id="createButtn">Create Profile</button>
-        <button (click)="updateProfile()" id="updateButton">Update Profile</button>
     </form>
 </div>

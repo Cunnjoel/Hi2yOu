@@ -7,19 +7,21 @@ import { RegisterComponent } from './routes/register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { ProfileviewComponent } from './routes/profile/profileview/profileview.component';
-import { ProfilecreateupdateComponent } from './routes/profile/profilecreateupdate/profilecreateupdate.component';
+import { ProfilecreateComponent } from './routes/profile/profilecreate/profilecreate.component';
 import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatepost/dashboardcreatepost.component';
+import { UpdateprofileComponent } from './routes/profile/updateprofile/updateprofile.component';
 import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RegisterComponent,
-    ProfilecreateupdateComponent,
+    ProfilecreateComponent,
     ProfileviewComponent,
     DashboardcreatepostComponent,
+    UpdateprofileComponent,
     ViewallpostsComponent
-
   ],
   imports: [
     BrowserModule,
