@@ -1,0 +1,19 @@
+.List {
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          background-color: lightblue;
+          border: 2px solid black;
+          height: 50px;
+          width: 700px;
+          border-radius: 10px;
+          margin-top: 10px;
+          padding-top: 10px;
+}
+body {
+margin-left:50px;
+}
+h2 {
+   display: flex;
+   justify-content: center;
+ }

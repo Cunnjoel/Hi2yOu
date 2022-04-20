@@ -5,6 +5,7 @@ import { ProfilecreateupdateComponent } from './routes/profile/profilecreateupda
 import { ProfileviewComponent } from './routes/profile/profileview/profileview.component';
 import { RegisterComponent } from './routes/register/register.component';
 import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatepost/dashboardcreatepost.component';
+import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -13,6 +14,7 @@ const routes: Routes = [
   {path: 'viewprofile/:id', component : ProfileviewComponent},
   {path: 'viewprofile/user/:id', component : ProfileviewComponent},
   {path: 'dashboard', component: DashboardcreatepostComponent},
+  {path: 'viewposts', component: ViewallpostsComponent},
   {path: "**", redirectTo: ""}
 ];
 
