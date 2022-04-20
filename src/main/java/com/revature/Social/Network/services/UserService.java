@@ -3,6 +3,7 @@ package com.revature.Social.Network.services;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -15,6 +16,9 @@ public class UserService {
     @Autowired
     private UserRepo userRepo;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public List<User> getAll(){
         return userRepo.getAll();
     }
@@ -24,6 +28,7 @@ public class UserService {
 
     public User createUser (User user){
         Integer userId = userRepo.createUser(user);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User userFromDb = userRepo.getOne(userId);
         return userFromDb;
     }

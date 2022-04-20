@@ -18,12 +18,12 @@ export class DashboardcreatepostComponent implements OnInit {
   }
   
   createPost() {
-    this.newPost.user = {
+    /* this.newPost.user = {
       "userId": 1,
       "username": "user1",
       "password": "pass123",
       "email": "@email.com"
-    };
+    }; */
     let formData: FormData = new FormData();
     formData.append('file', this.file);
     
