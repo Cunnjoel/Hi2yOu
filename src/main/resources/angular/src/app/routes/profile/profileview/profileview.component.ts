@@ -24,6 +24,15 @@ export class ProfileviewComponent implements OnInit {
     {
       this.getProfileByUserId(this.id);
     }
+    else if (this.id == 0)
+    {
+      let userid : number;
+      this.sessionService.checkSession().subscribe(responseBody=>
+        {
+          userid = responseBody.userId;
+          this.getProfileByUserId(userid);
+        });
+    }
     else
     {
       this.getProfileById(this.id);

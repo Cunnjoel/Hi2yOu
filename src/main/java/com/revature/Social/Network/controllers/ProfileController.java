@@ -13,7 +13,6 @@ import org.springframework.web.multipart.MultipartFile;
 @RequestMapping("profile")
 @CrossOrigin(origins = {"http://localhost:4200"}, allowCredentials = "true")
 public class ProfileController
-
 {
     Logger logger = Logger.getLogger(ProfileController.class);
 
