@@ -1,6 +1,7 @@
 package com.revature.Social.Network.repos;
 
 import com.revature.Social.Network.models.Profile;
+import com.revature.Social.Network.models.User;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface ProfileRepo

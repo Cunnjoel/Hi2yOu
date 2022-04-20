@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
+import { SessionService } from 'src/app/services/session.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -11,26 +11,23 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class LoginComponent implements OnInit {
 
+  user: User = <User>{};
 
-  constructor(private userService : UserService, private router : Router) { }
+
+  constructor(private userService : UserService, private router : Router, private sessionService: SessionService) { }
 
   ngOnInit(): void {
-    var loggedIn : any = localStorage.getItem("id)");
-    if(loggedIn !== undefined || loggedIn !== undefined){
-      this.router.navigate(['login']);
-    }
-  }
-  onSubmit(form:NgForm) : void{
-    let user : User = {username : form.value.username, password: form.value.password, email : form.value.email, userId : form.value.userId};
-    console.log(user)
   }
 
-userLogin(form : NgForm) : void{
+userLogin(){
   
-  let user : User = <User> {};
-    this.userService.get(user).subscribe(responseBody =>{
-    
-        this.router.navigate(['/dashboard'])
-      })
+    this.userService.getByUsername(this.user.username).subscribe(responseBody =>{
+    let loginUser : User = responseBody 
+    if (loginUser !=null)
+    {this.sessionService.login(loginUser).subscribe(responseBody=>{
+      this.router.navigate(['/dashboard'])
+
+       })}
+     })
   }
 }

@@ -1,6 +1,7 @@
 package com.revature.Social.Network.services;
 
 import com.revature.Social.Network.models.Profile;
+import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.ProfileRepo;
 import org.springframework.beans.MutablePropertyValues;
 import org.springframework.beans.factory.annotation.Autowired;

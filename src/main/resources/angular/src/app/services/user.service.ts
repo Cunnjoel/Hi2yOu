@@ -28,8 +28,8 @@ export class UserService {
     return this.httpCli.put(`${baseUrl}/${id}`, data)
   }
 
-  getByUsername(username: any){
-    return this.httpCli.get<User>(`${baseUrl}?username=${username}`);
+  getByUsername(username: string){
+    return this.httpCli.get<User>(`${baseUrl}/${username}`);
   }
 
   deleteUser(){
