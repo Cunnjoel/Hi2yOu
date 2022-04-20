@@ -10,6 +10,7 @@ import { Post } from '../models/Post'
 export class PostService {
 
   makePost : Post = <Post>{}
+  makeLike : Post = <Post>{}
 
   constructor(private httpCli : HttpClient) { }
 

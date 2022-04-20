@@ -11,6 +11,8 @@ import { ProfilecreateComponent } from './routes/profile/profilecreate/profilecr
 import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatepost/dashboardcreatepost.component';
 import { UpdateprofileComponent } from './routes/profile/updateprofile/updateprofile.component';
 import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
+import { AddlikesComponent } from './routes/dashboard/addlikes/addlikes.component';
+
 
 @NgModule({
   declarations: [
@@ -21,7 +23,8 @@ import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallpos
     ProfileviewComponent,
     DashboardcreatepostComponent,
     UpdateprofileComponent,
-    ViewallpostsComponent
+    ViewallpostsComponent,
+    AddlikesComponent,
   ],
   imports: [
     BrowserModule,
