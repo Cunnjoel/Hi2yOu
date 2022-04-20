@@ -9,7 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileviewComponent } from './routes/profile/profileview/profileview.component';
 import { ProfilecreateupdateComponent } from './routes/profile/profilecreateupdate/profilecreateupdate.component';
 import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatepost/dashboardcreatepost.component';
-
+import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,8 +17,9 @@ import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatep
     RegisterComponent,
     ProfilecreateupdateComponent,
     ProfileviewComponent,
-    DashboardcreatepostComponent
-    
+    DashboardcreatepostComponent,
+    ViewallpostsComponent
+
   ],
   imports: [
     BrowserModule,
