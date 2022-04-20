@@ -18,6 +18,7 @@ public interface UserRepo {
 
     User getOne (Integer userId);
 
+    User getUserGivenEmail(String email);
 
 
 }

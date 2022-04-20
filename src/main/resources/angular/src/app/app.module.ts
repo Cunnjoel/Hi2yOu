@@ -18,7 +18,7 @@ import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallpos
     LoginComponent,
     RegisterComponent,
     ProfilecreateComponent,
-    ProfileviewComponent,
+    ProfileviewComponent, 
     DashboardcreatepostComponent,
     UpdateprofileComponent,
     ViewallpostsComponent
