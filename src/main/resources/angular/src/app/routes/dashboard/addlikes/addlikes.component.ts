@@ -13,6 +13,8 @@ export class AddlikesComponent implements OnInit, OnChanges {
 
   isLiked: boolean = true;
 
+  count: number = 0; 
+
   @Input()
   postId!: number;
 
@@ -46,15 +48,18 @@ export class AddlikesComponent implements OnInit, OnChanges {
   checkLike() {
     this.sessionService.checkSession().subscribe(responseBody => {
       this.newLike.user = responseBody;
-      console.log(this.postView.users);
-      console.log(this.newLike.user.userId);
       this.postView.users.forEach((element: { userId: number; }) => {
         if(element.userId === this.newLike.user.userId){
           this.isLiked = false;
         }
       });
     })
-  
+  }
+
+  likeCounter(){
+    this.postView.users.forEach((element: { Count: () => number; }) => {
+      this.count = element.Count()
+    });
   }
 
 }

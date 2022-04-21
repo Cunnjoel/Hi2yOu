@@ -9,6 +9,7 @@ const baseUrl = 'http://localhost:9000/user';
   providedIn: 'root'
 })
 export class UserService {
+  [x: string]: any;
 
   constructor(private httpCli : HttpClient) { }
 
