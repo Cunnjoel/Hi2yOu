@@ -17,7 +17,7 @@ export class AppComponent {
   {
     this.sessionService.logout().subscribe(responseBody=>
       {
-          console.log(responseBody);
+          this.router.navigate([""]);
       });
   }
 }
