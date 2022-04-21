@@ -3,6 +3,7 @@
         <div id = "login-card">
         <form>
             <h1 class="h3 mb-3 font-weight-normal">Login!</h1>
+            <div *ngIf="this.errorM">{{this.errorM}}</div>
             <label for="username" class="sr-only">Username</label>
             <input type="text" name="username" id="username" class="form-control" placeholder="Username" [(ngModel)]="user.username"[ngModelOptions]="{standalone: true}">
             <br>

@@ -1,5 +1,5 @@
 .container-view {
-         display: flex;
+         display: flex-box;
          justify-content: right;
  }
 .item {
@@ -22,4 +22,9 @@ h2 {
  }
 .item{
   color: white;
+}
+img {
+       width: 75px;
+       height: 75px;
+
 }

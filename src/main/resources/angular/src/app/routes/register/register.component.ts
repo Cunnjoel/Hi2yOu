@@ -12,6 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class RegisterComponent implements OnInit {
 
   user: User = <User>{};
+  errorM : string = "";
 
   constructor(private userService : UserService, private router: Router, private sessionService : SessionService) { }
 
@@ -19,14 +20,20 @@ export class RegisterComponent implements OnInit {
   }
   registerUser()
   {
-    
     this.userService.create(this.user).subscribe(responseBody=>
       {
-        let newUser : User = responseBody
-        this.sessionService.login(newUser).subscribe(responseBody=>{
-          
-          this.router.navigate(['/createprofile'])
-        })
+        let newUser : User = responseBody;
+        if (newUser.userId == null)
+        {
+          this.errorM = "Please file in the required fields with a *"
+        }
+        else
+        {
+          newUser.password = this.user.password;
+          this.sessionService.login(newUser).subscribe(responseBody=>{
+            this.router.navigate(['/createprofile'])
+          })
+        }
       });
   }
 }

@@ -1,3 +1,15 @@
+<<<<<<< HEAD
+<h2>View All Posts</h2>
+<!--<button (click)="viewAllPosts()">view Post</button> -->
+     <div class="container-vtew" >
+        <div *ngFor="let msg of postViewing">
+            <div *ngif="!msg.pictureURL">
+                  <img [src] = msg.pictureURL alt="Post Pic" id="Post Pic">
+            </div>  
+            <div class="item">
+                    {{msg.message}}
+            </div>
+=======
 <h2>View All Messages</h2>
 <button (click)="viewAllPosts()">view Post</button>
       <div *ngFor="let msg of postViewing; let i = index">
@@ -6,7 +18,10 @@
       
            
             {{i + 1}} :      {{msg.message}}
-            <app-addlikes [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
+            <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
         </div>
+>>>>>>> 7df35ba6dbe9a0535b2baf0e3d54885a321d51c6
       </div>
+    <div>
+
 

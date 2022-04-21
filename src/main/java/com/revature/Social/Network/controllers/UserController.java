@@ -26,79 +26,67 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user){
-         user = userService.createUser(user);
-        if (user != null){
-            return user;
-        }
-        try{
-            throw new Exception("Fields missing, could not create user");
-        }
-        catch(Exception e)
+    public User createUser(@RequestBody User user)
+    {
+        try
         {
-            logger.warn("Stack Trace", e);
+            return userService.createUser(user);
         }
-        return null;
+        catch (Exception e)
+        {
+            logger.warn("Stack Trace?", e);
+            return new User();
         }
-
-        //return  userService.createUser(user);
+    }
 
 
 
     @PutMapping
-    public User updateUser(@RequestBody User user){
-         user = userService.updateUser(user);
-        if (user != null)
-        {
-            return user;
-        }
+    public User updateUser(@RequestBody User user)
+    {
         try
         {
-            throw new Exception("Please make sure new data is different that current information");
+            return userService.updateUser(user);
         }catch (Exception e){
-            logger.warn("Stack Trace", e);
-        }
-        return null;
 
-        //return userService.updateUser(user);
+            logger.warn("Stack Trace?", e);
+            return new User();
+        }
     }
     @DeleteMapping("{userId}")
     public String deleteUser(@PathVariable Integer userId){
-        userService.deleteUser(userId);
+        try
+        {
+            userService.deleteUser(userId);
+            return "the user with the id" + userId + "was successfully deleted";
+        }
+        catch(Exception e)
+        {
+            logger.warn("Stack Trace?", e);
+            return "Couldn't find user to delete";
+        }
 
-        return "the user with the id" + userId + "was successfully deleted";
     }
 
 
     @GetMapping("username/{username}")
     public User getUserGivenUsername(@PathVariable String username){
 
-        User user = userService.getUserGivenUsername(username);
-        if(user != null){
-            return user;
-        }
         try{
-            throw new Exception("No user with that Username");
+            return userService.getUserGivenUsername(username);
         }catch (Exception e){
-            logger.warn("Stack Trace",e);
+            logger.warn("Stack Trace?",e);
+            return new User();
         }
-        return null;
-        //return this.userService.getUserGivenUsername(username);
     }
 
     @GetMapping("email/{email}")
     public User getUserGivenEmail(@PathVariable String email){
-
-        User user = userService.getUserGivenEmail(email);
-        if(user != null){
-            return user;
-        }
         try{
-            throw new Exception("That is not a valid email");
+            return userService.getUserGivenEmail(email);
         }catch (Exception e){
-            logger.warn("Stack Trace", e);
+            logger.warn("Stack Trace?", e);
+            return new User();
         }
-        return null;
-        //return this.userService.getUserGivenEmail(email);
     }
 }
