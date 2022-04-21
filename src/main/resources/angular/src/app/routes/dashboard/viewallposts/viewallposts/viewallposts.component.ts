@@ -12,24 +12,27 @@ export class ViewallpostsComponent implements OnInit {
 
    postViewing : Array<Post>=[];
   constructor(private postService : PostService) { }
+  
 
   ngOnInit(): void {
 
   }
   viewAllPosts(){
       this.postService.getAllPosts().subscribe(responseBody=>{
-        this.postViewing = responseBody;
-        console.log(responseBody);
+        this.postViewing = responseBody
+        console.log(this.postViewing)
        });
     }
-    clickEvent(){
+
+     
+    /* clickEvent(){
 //         this.postService.getAllPosts().subscribe(responseBody=>{
 //            this.postViewing = responseBody;
 //            console.log(responseBody);
         //console.log(this.postViewing.pictureUrl);
         //return this.postViewing.pictureUrl;
      // });
-    };
+    }; */
 }
 
 
