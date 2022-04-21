@@ -24,9 +24,12 @@ public class ProfileService
 
     public Profile createProfile(Profile profile)
     {
-        Integer profileId = this.profileRepo.createProfile(profile);
-
-        return this.profileRepo.getProfileById(profileId);
+        Integer id = this.profileRepo.createProfile(profile);
+        if (id == null)
+        {
+            return null;
+        }
+        return this.getProfile(id);
     }
 
     public Profile getProfile(Integer profileId)

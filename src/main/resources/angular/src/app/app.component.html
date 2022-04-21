@@ -10,13 +10,16 @@
             <a class="nav-link active" aria-current="page" routerLink="/register">Register</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="/profile">Profile</a>
+            <a class="nav-link" routerLink="/viewprofile/0">Profile</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/dashboard">Dashboard</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" routerLink="/viewposts">ViewPosts</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" (click)="logout()" routerLink="/logout">Logout</a>
           </li>
         </ul>
       </div>
