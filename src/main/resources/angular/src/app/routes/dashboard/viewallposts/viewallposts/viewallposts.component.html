@@ -1,9 +1,12 @@
 <h2>View All Messages</h2>
 <button (click)="viewAllPosts()">view Post</button>
-    <div *ngFor="let msg of postViewing; let i = index">
-      <div class="List">
-          {{i + 1}} : {{msg.message}} {{msg.user.userId}}
-          <app-addlikes [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
-      </div>
+      <div *ngFor="let msg of postViewing; let i = index">
+        <img [src] = "msg.pictureURL" alt="Post Pic" id="Post Pic"> 
+        <div class="item">
       
-    </div>
+           
+            {{i + 1}} :      {{msg.message}}
+            <app-addlikes [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
+        </div>
+      </div>
+

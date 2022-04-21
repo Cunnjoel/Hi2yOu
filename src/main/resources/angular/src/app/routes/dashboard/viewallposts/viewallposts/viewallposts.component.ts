@@ -10,7 +10,7 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class ViewallpostsComponent implements OnInit {
 
-  postViewing : Array<Post>=[];
+   postViewing : Array<Post>=[];
   constructor(private postService : PostService) { }
   
 
@@ -24,6 +24,15 @@ export class ViewallpostsComponent implements OnInit {
        });
     }
 
+     
+    /* clickEvent(){
+//         this.postService.getAllPosts().subscribe(responseBody=>{
+//            this.postViewing = responseBody;
+//            console.log(responseBody);
+        //console.log(this.postViewing.pictureUrl);
+        //return this.postViewing.pictureUrl;
+     // });
+    }; */
 }
 
 
