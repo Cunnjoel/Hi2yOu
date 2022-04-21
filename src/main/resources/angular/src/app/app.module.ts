@@ -12,6 +12,7 @@ import { DashboardcreatepostComponent} from './routes/dashboard/dashboardcreatep
 import { UpdateprofileComponent } from './routes/profile/updateprofile/updateprofile.component';
 import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
 import { AddlikesComponent } from './routes/dashboard/addlikes/addlikes.component';
+import { LoggedInGuardsGuard } from './guards/logged-in-guards.guard';
 
 
 @NgModule({
