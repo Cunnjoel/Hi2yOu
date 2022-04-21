@@ -1,5 +1,5 @@
 .container-view {
-         display: flex;
+         display: flex-box;
          justify-content: right;
  }
 .item {
@@ -19,3 +19,8 @@ h2 {
    display: flex;
    justify-content: center;
  }
+img {
+       width: 75px;
+       height: 75px;
+
+}
