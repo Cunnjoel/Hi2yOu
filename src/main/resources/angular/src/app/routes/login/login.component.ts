@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
 
   user: User = <User>{};
   errorM : string = "";
-  currentUserLogin : User = <User>();
+  // currentUserLogin : User = <User>();
 
   constructor(private userService : UserService, private router : Router, private sessionService: SessionService) { }
 
@@ -32,9 +32,9 @@ userLogin(){
       }
       else
       {
-        console.log(responseBody);
-        this.userService.currentUserLogin = responseBody;
-        this.router.navigate(['/dashboard'])
+        // console.log(responseBody);
+        // this.userService.currentUserLogin = responseBody;
+        // this.router.navigate(['/dashboard'])
       }
        })}
      })
