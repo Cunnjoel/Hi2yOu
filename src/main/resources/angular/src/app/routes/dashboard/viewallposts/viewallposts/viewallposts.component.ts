@@ -23,16 +23,6 @@ export class ViewallpostsComponent implements OnInit {
         console.log(this.postViewing)
        });
     }
-
-     
-    /* clickEvent(){
-//         this.postService.getAllPosts().subscribe(responseBody=>{
-//            this.postViewing = responseBody;
-//            console.log(responseBody);
-        //console.log(this.postViewing.pictureUrl);
-        //return this.postViewing.pictureUrl;
-     // });
-    }; */
 }
 
 
