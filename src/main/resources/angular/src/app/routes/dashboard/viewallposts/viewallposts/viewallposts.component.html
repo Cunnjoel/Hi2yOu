@@ -3,7 +3,7 @@
     <div *ngFor="let msg of postViewing; let i = index">
       <div class="List">
           {{i + 1}} : {{msg.message}} {{msg.user.userId}}
-          <app-addlikes [postId]="id"></app-addlikes>
+          <app-addlikes [postId]="msg.id"></app-addlikes>
       </div>
       
     </div>

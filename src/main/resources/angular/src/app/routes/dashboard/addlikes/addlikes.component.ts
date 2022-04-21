@@ -25,7 +25,7 @@ export class AddlikesComponent implements OnInit {
   addLike(){
     this.sessionService.checkSession().subscribe(responseBody =>{
       this.newLike.user = responseBody;
-      this.postService.addLike(this.newLike.id, this.newLike.user.userId).subscribe(responseBody =>{
+      this.postService.addLike(this.postId, this.newLike.user.userId).subscribe(responseBody =>{
         this.postService.makeLike = responseBody
       })
     })

@@ -12,15 +12,14 @@ export class ViewallpostsComponent implements OnInit {
 
   postViewing : Array<Post>=[];
   constructor(private postService : PostService) { }
-  id: number = this.postViewing[0].id
+  
 
   ngOnInit(): void {
 
   }
   viewAllPosts(){
       this.postService.getAllPosts().subscribe(responseBody=>{
-        this.postViewing = responseBody;
-        
+        this.postViewing = responseBody
         
        });
     }
