@@ -43,8 +43,13 @@ public class UserController {
     }
 
 
-    @GetMapping("{username}")
+    @GetMapping("username/{username}")
     public User getUserGivenUsername(@PathVariable String username){
         return this.userService.getUserGivenUsername(username);
+    }
+
+    @GetMapping("email/{email}")
+    public User getUserGivenEmail(@PathVariable String email){
+        return this.userService.getUserGivenEmail(email);
     }
 }

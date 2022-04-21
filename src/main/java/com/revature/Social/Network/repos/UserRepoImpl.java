@@ -83,4 +83,16 @@ public class UserRepoImpl implements UserRepo{
 
         return session.get(User.class, userId);
     }
+
+    /**
+     * <h2>This method gets an existing User from the database when given its email</h2>
+     * @param email The email is passed in order to find the specific user
+     * @return returns the specific user object from the database after an email is passed
+     */
+    @Override
+    public User getUserGivenEmail(String email){
+        Session session =em.unwrap(Session.class);
+
+        return session.createQuery("from User where email ='" + email + "'", User.class).getSingleResult();
+    }
 }

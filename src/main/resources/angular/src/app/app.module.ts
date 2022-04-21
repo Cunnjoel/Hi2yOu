@@ -20,7 +20,7 @@ import { AddlikesComponent } from './routes/dashboard/addlikes/addlikes.componen
     LoginComponent,
     RegisterComponent,
     ProfilecreateComponent,
-    ProfileviewComponent,
+    ProfileviewComponent, 
     DashboardcreatepostComponent,
     UpdateprofileComponent,
     ViewallpostsComponent,
