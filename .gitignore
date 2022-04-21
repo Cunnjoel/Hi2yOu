@@ -34,3 +34,6 @@ build/
 
 ### Database Tables ###
 h2/
+
+### Logger File
+log4jlogger.log
