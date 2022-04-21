@@ -6,10 +6,10 @@ import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-profilecreateupdate',
-  templateUrl: './profilecreateupdate.component.html',
-  styleUrls: ['./profilecreateupdate.component.css']
+  templateUrl: './profilecreate.component.html',
+  styleUrls: ['./profilecreate.component.css']
 })
-export class ProfilecreateupdateComponent implements OnInit {
+export class ProfilecreateComponent implements OnInit {
 
   file : File = <File>{};
   newProfile : Profile = <Profile>{};
@@ -45,19 +45,5 @@ export class ProfilecreateupdateComponent implements OnInit {
   addFile(e : any)
   {
       this.file = e.target.files[0];
-  }
-
-  updateProfile()
-  {
-    let formData : FormData = new FormData();
-    formData.append('file', this.file);
-    this.profileService.uploadProfilePic(formData).subscribe(reponseBody=>
-      {
-          this.newProfile.pictureUrl = "https://" + reponseBody.fileUrl;
-          this.profileService.updateProfile(this.newProfile).subscribe(responseBody=>{
-            this.profileService.currentUserProfile = responseBody;
-            this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
-            });
-      });
   }
 }

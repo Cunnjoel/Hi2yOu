@@ -71,4 +71,17 @@ public class UserServiceTest {
 
         assertEquals(expectedOutput, actualOutput);
     }
+    @Test
+    void getUserGivenEmail(){
+
+        String expectedUsername = "user1";
+        String expectedPassword = "pass1";
+        String expectedEmail = "user1@gmail.com";
+        User expectedOutput = new User(1, expectedUsername, expectedPassword, expectedEmail);
+        Mockito.when(userRepo.getUserGivenEmail(expectedEmail)).thenReturn(expectedOutput);
+
+        User actualOutput = userService.getUserGivenEmail(expectedEmail);
+
+        assertEquals(expectedOutput,actualOutput);
+    }
 }

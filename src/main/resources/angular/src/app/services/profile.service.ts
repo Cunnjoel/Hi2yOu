@@ -35,4 +35,15 @@ export class ProfileService {
   {
     return this.httpCli.post<any>(`http://localhost:9000/profile/upload`,image);
   }
+
+  getIdNumberFromUrl(URL : string, start : number) : number
+  {
+    let url : string = URL.slice(start);
+    if (url.startsWith("user"))
+    {
+        return +url.slice(5);
+    }
+    return +url
+  }
+  
 }

@@ -68,4 +68,17 @@ public class UserControllerTest {
 
         assertEquals(expectedOutput, actualOutput);
     }
+    @Test
+    void getUserGivenEmail(){
+
+        String expectedUsername = "user123";
+        String expectedPassword = "pass123";
+        String expectedEmail = "user1@gmail.com";
+        User expectedOutput = new User(1, expectedUsername, expectedPassword,expectedEmail);
+        Mockito.when(userService.getUserGivenEmail(expectedEmail)).thenReturn(expectedOutput);
+
+        User actualOutput = userService.getUserGivenEmail(expectedEmail);
+
+        assertEquals(expectedOutput, actualOutput);
+    }
 }

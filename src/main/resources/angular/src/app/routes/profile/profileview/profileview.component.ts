@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
+import { User } from 'src/app/models/User';
 import { ProfileService } from 'src/app/services/profile.service';
+import { SessionService } from 'src/app/services/session.service';
 
 @Component({
   selector: 'app-profileview',
@@ -11,19 +13,20 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class ProfileviewComponent implements OnInit {
 
   profileViewing : Profile = <Profile>{};
-  constructor(private profileService : ProfileService , private router : Router) { }
+  id : number = 0;
+  buttonOn : boolean = false;
+
+  constructor(private profileService : ProfileService , private router : Router, private sessionService : SessionService) { }
 
   ngOnInit(): void {
-    let url : string = this.router.url.slice(13);
-    if (url.startsWith("user"))
+    this.id = this.profileService.getIdNumberFromUrl(this.router.url,13);
+    if (this.router.url.includes("user"))
     {
-        let userid : number = +url.slice(5);
-        this.getProfileByUserId(userid)
+      this.getProfileByUserId(this.id);
     }
     else
     {
-      let id : number = +url;
-      this.getProfileById(id);
+      this.getProfileById(this.id);
     }
   }
 
@@ -31,6 +34,7 @@ export class ProfileviewComponent implements OnInit {
   {
     this.profileService.getProfileById(id).subscribe(responseBody=>{
     this.profileViewing = responseBody;
+    this.checkIfUsersProfile();
     });
   }
 
@@ -38,6 +42,28 @@ export class ProfileviewComponent implements OnInit {
   {
     this.profileService.getProfileByUserId(userId).subscribe(responseBody=>{
     this.profileViewing = responseBody;
+    this.checkIfUsersProfile();
     });
+  }
+  
+  updateProfile()
+  {
+    this.router.navigate(['/updateprofile/' + this.id]);
+  }
+
+  checkIfUsersProfile()
+  {
+    let userOn : User; 
+    this.sessionService.checkSession().subscribe(responseBody=>{
+      userOn = responseBody;
+      if (userOn.userId === this.profileViewing.user.userId)
+      {
+        this.buttonOn = true;
+      }
+      else
+      {
+        this.buttonOn = false;
+      }
+   })
   }
 }

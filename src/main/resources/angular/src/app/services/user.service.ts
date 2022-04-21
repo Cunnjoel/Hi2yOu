@@ -29,10 +29,13 @@ export class UserService {
   }
 
   getByUsername(username: string){
-    return this.httpCli.get<User>(`${baseUrl}/${username}`);
+    return this.httpCli.get<User>(`${baseUrl}/username/${username}`);
   }
 
   deleteUser(){
     return this.httpCli.delete(baseUrl);
+  }
+  getUserGivenEmail(email : string){
+    return this.httpCli.get<User>(`${baseUrl}/email/${email}`)
   }
 }

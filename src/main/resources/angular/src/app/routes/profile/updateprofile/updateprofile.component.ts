@@ -1,0 +1,46 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Profile } from 'src/app/models/Profile';
+import { User } from 'src/app/models/User';
+import { ProfileService } from 'src/app/services/profile.service';
+
+@Component({
+  selector: 'app-updateprofile',
+  templateUrl: './updateprofile.component.html',
+  styleUrls: ['./updateprofile.component.css']
+})
+export class UpdateprofileComponent implements OnInit {
+
+  file : File = <File>{};
+  profile : Profile = <Profile>{};
+
+  constructor(private profileService : ProfileService, private router : Router) { }
+
+  ngOnInit(): void {
+    this.profileService.getProfileById(this.profileService.getIdNumberFromUrl(this.router.url,15)).subscribe(responseBody=>{
+        this.profile = responseBody;
+    })
+  }
+
+  addFile(e : any)
+  {
+      this.file = e.target.files[0];
+  }
+
+  updateProfile()
+  {
+    let formData : FormData = new FormData();
+    formData.append('file', this.file);
+    this.profileService.uploadProfilePic(formData).subscribe(reponseBody=>
+      {
+        if (reponseBody != null)
+        {
+          this.profile.pictureUrl = "https://" + reponseBody.fileUrl;
+        }
+        this.profileService.updateProfile(this.profile).subscribe(responseBody=>{
+            this.profileService.currentUserProfile = responseBody;
+            this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
+        });
+      });
+  }
+}
