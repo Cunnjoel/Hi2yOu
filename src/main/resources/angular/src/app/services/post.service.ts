@@ -10,6 +10,7 @@ import { Post } from '../models/Post'
 export class PostService {
 
   makePost : Post = <Post>{}
+  makeLike : Post = <Post>{}
 
   constructor(private httpCli : HttpClient) { }
 
@@ -32,7 +33,7 @@ export class PostService {
   }
 
   addLike(id: number, userId: number){
-    return this.httpCli.patch<Post>(`http://localhost:9000/post/${id}/user/${userId}`,{
+    return this.httpCli.put<Post>(`http://localhost:9000/post/${id}/user/${userId}`,{
       "id": id,
       "user": userId
     });
