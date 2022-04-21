@@ -13,7 +13,6 @@ export class LoginComponent implements OnInit {
 
   user: User = <User>{};
   errorM : string = "";
-  currentUserLogin : User = <User>();
 
   constructor(private userService : UserService, private router : Router, private sessionService: SessionService) { }
 
@@ -21,30 +20,18 @@ export class LoginComponent implements OnInit {
   }
 
 userLogin(){
-  
-    this.userService.getByUsername(this.user.username).subscribe(responseBody =>{
-    let loginUser : User = responseBody 
-    if (loginUser !=null) 
-    {this.sessionService.login(loginUser).subscribe(responseBody=>{
-      if(responseBody.id == null)
+    let user2 : User;
+    this.sessionService.login(this.user).subscribe(responseBody=>{
+      user2 = responseBody;
+      if (user2.userId == null)
       {
-        this.errorM = "Invalid username or password"
+          this.errorM = "Incorrect Username, Email, or password";
       }
       else
       {
-        console.log(responseBody);
-        this.userService.currentUserLogin = responseBody;
         this.router.navigate(['/dashboard'])
       }
-       })}
-     })
+       })
+    
   }
 }
-// getUserGivenEmail(){
-//   this.userService.getUserGivenEmail(this.user.email).subscribe
-//   (responseBody =>{
-//     let getUserGivenEmail : User = responseBody
-//     if (getUserGivenEmail = !null)
-    
-//   })
-// }

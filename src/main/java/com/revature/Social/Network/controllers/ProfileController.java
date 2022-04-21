@@ -4,7 +4,6 @@ import com.revature.Social.Network.models.Picture;
 import com.revature.Social.Network.models.Profile;
 import com.revature.Social.Network.services.ProfileService;
 import org.apache.log4j.Logger;
-import org.junit.jupiter.api.parallel.Execution;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
