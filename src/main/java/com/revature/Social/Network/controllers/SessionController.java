@@ -1,5 +1,6 @@
 package com.revature.Social.Network.controllers;
 
+import com.revature.Social.Network.models.Session;
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.services.UserService;
 
@@ -31,9 +32,10 @@ public class SessionController {
     }
 
     @DeleteMapping
-    public ResponseEntity<String> logout(HttpSession httpSession){
+    public ResponseEntity<Session> logout(HttpSession httpSession){
         httpSession.setAttribute("sessionVar", null);
-        return ResponseEntity.status(HttpStatus.OK).body("Logged out and session invalidated");
+        Session session = new Session("Logged out and session invalidated");
+        return ResponseEntity.status(HttpStatus.OK).body(session);
     }
 
     @GetMapping

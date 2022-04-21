@@ -5,14 +5,16 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { SessionService } from 'src/app/services/session.service';
 
 @Component({
-  selector: 'app-profilecreateupdate',
+  selector: 'app-profilecreate',
   templateUrl: './profilecreate.component.html',
   styleUrls: ['./profilecreate.component.css']
 })
 export class ProfilecreateComponent implements OnInit {
 
   file : File = <File>{};
+  fileUrl : any;
   newProfile : Profile = <Profile>{};
+  errorM : string = "";
   currentProfile : Profile = <Profile>{};
 
   constructor(private profileService : ProfileService, private router : Router, private sessionService : SessionService) { }
@@ -35,9 +37,16 @@ export class ProfilecreateComponent implements OnInit {
           {
             this.newProfile.user = responseBody;
             this.profileService.createProfile(this.newProfile).subscribe(responseBody=>{
-              this.profileService.currentUserProfile = responseBody;
-              this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
-              });
+              if (responseBody.id == null)
+              {
+                  this.errorM = "Please file in the required fields with a *"
+              }
+              else
+              {
+                this.profileService.currentUserProfile = responseBody;
+                this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
+              }
+            });
           });
       });
   }
@@ -45,5 +54,11 @@ export class ProfilecreateComponent implements OnInit {
   addFile(e : any)
   {
       this.file = e.target.files[0];
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload = (_e) =>
+      {
+        this.fileUrl = reader.result;
+      }
   }
 }

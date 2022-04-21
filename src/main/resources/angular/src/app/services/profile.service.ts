@@ -38,7 +38,9 @@ export class ProfileService {
 
   getIdNumberFromUrl(URL : string, start : number) : number
   {
+    console.log(URL);
     let url : string = URL.slice(start);
+    console.log(url);
     if (url.startsWith("user"))
     {
         return +url.slice(5);
