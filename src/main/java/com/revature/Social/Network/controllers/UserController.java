@@ -27,13 +27,40 @@ public class UserController {
 
     @PostMapping
     public User createUser(@RequestBody User user){
-        return  userService.createUser(user);
-    }
+         user = userService.createUser(user);
+        if (user != null){
+            return user;
+        }
+        try{
+            throw new Exception("Fields missing, could not create user");
+        }
+        catch(Exception e)
+        {
+            logger.warn("Stack Trace", e);
+        }
+        return null;
+        }
+
+        //return  userService.createUser(user);
+
 
 
     @PutMapping
     public User updateUser(@RequestBody User user){
-        return userService.updateUser(user);
+         user = userService.updateUser(user);
+        if (user != null)
+        {
+            return user;
+        }
+        try
+        {
+            throw new Exception("Please make sure new data is different that current information");
+        }catch (Exception e){
+            logger.warn("Stack Trace", e);
+        }
+        return null;
+
+        //return userService.updateUser(user);
     }
     @DeleteMapping("{userId}")
     public String deleteUser(@PathVariable Integer userId){
@@ -45,11 +72,33 @@ public class UserController {
 
     @GetMapping("username/{username}")
     public User getUserGivenUsername(@PathVariable String username){
-        return this.userService.getUserGivenUsername(username);
+
+        User user = userService.getUserGivenUsername(username);
+        if(user != null){
+            return user;
+        }
+        try{
+            throw new Exception("No user with that Username");
+        }catch (Exception e){
+            logger.warn("Stack Trace",e);
+        }
+        return null;
+        //return this.userService.getUserGivenUsername(username);
     }
 
     @GetMapping("email/{email}")
     public User getUserGivenEmail(@PathVariable String email){
-        return this.userService.getUserGivenEmail(email);
+
+        User user = userService.getUserGivenEmail(email);
+        if(user != null){
+            return user;
+        }
+        try{
+            throw new Exception("That is not a valid email");
+        }catch (Exception e){
+            logger.warn("Stack Trace", e);
+        }
+        return null;
+        //return this.userService.getUserGivenEmail(email);
     }
 }
