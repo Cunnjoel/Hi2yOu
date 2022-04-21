@@ -1,8 +1,9 @@
 package com.revature.Social.Network.repos;
 
 import com.revature.Social.Network.models.Profile;
-import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.utils.S3Utility;
+import org.apache.log4j.Logger;
+import org.hibernate.AssertionFailure;
 import org.hibernate.Session;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -16,6 +17,7 @@ import java.io.IOException;
 public class ProfileRepoImpl implements ProfileRepo
 {
 
+    Logger logger = Logger.getLogger(ProfileRepoImpl.class);
 
     @Autowired
     S3Utility s3Utility;
@@ -31,7 +33,7 @@ public class ProfileRepoImpl implements ProfileRepo
     public Profile getProfileById(Integer profileId)
     {
         Session session = em.unwrap(Session.class);
-        return session.get(Profile.class,profileId);
+        return session.get(Profile.class, profileId);
     }
 
     /**
@@ -64,8 +66,16 @@ public class ProfileRepoImpl implements ProfileRepo
     @Override
     public Profile getProfileByUserId(Integer userId)
     {
-        Session session = em.unwrap(Session.class);
-        return session.createQuery("from Profile where user.id = '" + userId + "'",Profile.class).getSingleResult();
+        try
+        {
+            Session session = em.unwrap(Session.class);
+            return session.createQuery("from Profile where user.id = '" + userId + "'",Profile.class).getSingleResult();
+        }
+        catch(Exception e)
+        {
+            logger.warn("Stack Trace?",e);
+        }
+        return null;
     }
 
     /**
@@ -83,7 +93,7 @@ public class ProfileRepoImpl implements ProfileRepo
         }
         catch (IOException e)
         {
-            System.out.println(e.getStackTrace());
+            logger.warn("Stack Trace?",e);
             return "Filed not uploaded!";
         }
         return s3Utility.bucketName + s3Utility.picturerUrl + file.getOriginalFilename();

@@ -7,7 +7,7 @@
             <img [src]="this.fileUrl" alt="Profile Pics" id="profilePic">
         </div>
         <div>
-            First Name:
+            First Name*:
             <input type="text" placeholder="First Name" [(ngModel)]="newProfile.firstName" id="firstName" [ngModelOptions]="{standalone: true}">
         </div>
         <div>
@@ -15,25 +15,26 @@
             <input type="text" placeholder="Middle Initial" [(ngModel)]="newProfile.middleInit" id="middleInit" [ngModelOptions]="{standalone: true}">
         </div>
         <div>
-            Last name:
+            Last name*:
             <input type="text" placeholder="Last Name" [(ngModel)]="newProfile.lastName" id="lastName" [ngModelOptions]="{standalone: true}">
         </div>
         <div>
-            Birthday:
+            Birthday*:
             <input type="text" placeholder="Birthday" [(ngModel)]="newProfile.birthday" id="birthday" [ngModelOptions]="{standalone: true}">
         </div>
         <div>
-            City:
+            City*:
             <input type="text" placeholder="City" [(ngModel)]="newProfile.city" id="citys"[ngModelOptions]="{standalone: true}">
         </div>
         <div>
-            State:
+            State*:
             <input type="text" placeholder="State" [(ngModel)]="newProfile.state" id="state" [ngModelOptions]="{standalone: true}">
         </div>
         <div>
             About You:
             <textarea rows="20" cols="50" [(ngModel)]="newProfile.aboutMe" id="aboutMe" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
+        <div *ngIf="this.errorM">{{this.errorM}}</div>
         <button (click)="createProfile()" id="createButtn">Create Profile</button>
     </form>
 </div>

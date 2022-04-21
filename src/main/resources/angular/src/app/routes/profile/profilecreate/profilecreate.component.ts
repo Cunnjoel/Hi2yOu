@@ -14,6 +14,7 @@ export class ProfilecreateComponent implements OnInit {
   file : File = <File>{};
   fileUrl : any;
   newProfile : Profile = <Profile>{};
+  errorM : string = "";
   currentProfile : Profile = <Profile>{};
 
   constructor(private profileService : ProfileService, private router : Router, private sessionService : SessionService) { }
@@ -36,9 +37,16 @@ export class ProfilecreateComponent implements OnInit {
           {
             this.newProfile.user = responseBody;
             this.profileService.createProfile(this.newProfile).subscribe(responseBody=>{
-              this.profileService.currentUserProfile = responseBody;
-              this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
-              });
+              if (responseBody.id == null)
+              {
+                  this.errorM = "Please file in the required fields with a *"
+              }
+              else
+              {
+                this.profileService.currentUserProfile = responseBody;
+                this.router.navigate([`/viewprofile/` + this.profileService.currentUserProfile.id])
+              }
+            });
           });
       });
   }
