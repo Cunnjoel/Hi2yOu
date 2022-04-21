@@ -12,7 +12,8 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
 
   user: User = <User>{};
-
+  errorM : string = "";
+  currentUserLogin : User = <User>();
 
   constructor(private userService : UserService, private router : Router, private sessionService: SessionService) { }
 
@@ -23,12 +24,27 @@ userLogin(){
   
     this.userService.getByUsername(this.user.username).subscribe(responseBody =>{
     let loginUser : User = responseBody 
-    console.log(loginUser)
-    if (loginUser !=null)
+    if (loginUser !=null) 
     {this.sessionService.login(loginUser).subscribe(responseBody=>{
-      this.router.navigate(['/dashboard'])
-
+      if(responseBody.id == null)
+      {
+        this.errorM = "Invalid username or password"
+      }
+      else
+      {
+        console.log(responseBody);
+        this.userService.currentUserLogin = responseBody;
+        this.router.navigate(['/dashboard'])
+      }
        })}
      })
   }
 }
+// getUserGivenEmail(){
+//   this.userService.getUserGivenEmail(this.user.email).subscribe
+//   (responseBody =>{
+//     let getUserGivenEmail : User = responseBody
+//     if (getUserGivenEmail = !null)
+    
+//   })
+// }
