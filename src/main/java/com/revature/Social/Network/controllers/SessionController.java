@@ -7,10 +7,10 @@ import com.revature.Social.Network.services.UserService;
 
 import com.revature.Social.Network.utils.Hashing;
 import org.apache.log4j.Logger;
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpSession;
@@ -22,7 +22,7 @@ public class SessionController {
     Logger logger = Logger.getLogger(SessionController.class);
 
     @Autowired
-    private PasswordEncoder passwordEncoder;
+    private BasicPasswordEncryptor passwordEncoder;
 
     private UserService userService;
     @Autowired
@@ -33,14 +33,31 @@ public class SessionController {
 
     @PostMapping
     public ResponseEntity<User> login(HttpSession httpSession, @RequestBody User user){
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User user1 = this.userService.getUserGivenUsername(user.getUsername());
-        if (user1.getPassword() != user.getPassword())
+        User user1 = null;
+        try
         {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+           user1 = this.userService.getUserGivenUsername(user.getUsername());
         }
-        httpSession.setAttribute("sessionVar", user);
-        return ResponseEntity.status(HttpStatus.OK).body(user);
+        catch(Exception e)
+        {
+            logger.warn("Stack Trace?", e);
+            try
+            {
+                user1 = this.userService.getUserGivenEmail((user.getUsername()));
+            }
+            catch(Exception e2)
+            {
+                logger.warn("Stack Trace?", e2);
+                user1 = new User();
+            }
+        }
+        if (user1.getUserId() == null || passwordEncoder.checkPassword(user.getPassword(),user1.getPassword()) == false)
+        {
+            httpSession.setAttribute("sessionVar",null);
+            return ResponseEntity.status(HttpStatus.OK).body(new User());
+        }
+        httpSession.setAttribute("sessionVar", user1);
+        return ResponseEntity.status(HttpStatus.OK).body(user1);
 
     }
 

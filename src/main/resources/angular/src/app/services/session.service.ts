@@ -11,7 +11,7 @@ export class SessionService {
   constructor(private httpCli : HttpClient) { }
 
   login(user : User){
-    return this.httpCli.post<any>(`http://localhost:9000/session`,user ,
+    return this.httpCli.post<User>(`http://localhost:9000/session`,user ,
     {
       withCredentials: true
     });

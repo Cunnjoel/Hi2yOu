@@ -20,52 +20,19 @@ export class LoginComponent implements OnInit {
   }
 
 userLogin(){
-  
-    let loginUser : User;
-    this.userService.getByUsername(this.user.username).subscribe(responseBody =>{
-    loginUser = responseBody 
-    if(loginUser.userId == null)
-    {
-      this.userService.getUserGivenEmail(this.user.username).subscribe(responseBody=>{
-        loginUser = responseBody;
-        if (loginUser.userId == null)
-        {
-          this.errorM = "Incorrect Username, Email";
-        }
-        else
-        {
-            this.canLogin(loginUser);
-        }
-      })
-    }
-    else
-    {
-      this.canLogin(loginUser);
-    }
-     })
-  }
-  canLogin(u : User)
-  {
-    this.user.userId = u.userId;
-    this.user.username = u.username;
-    this.user.email = u.email;
+    let user2 : User;
     this.sessionService.login(this.user).subscribe(responseBody=>{
-      if (responseBody == null)
+      user2 = responseBody;
+      console.log(user2);
+      if (user2.userId == null)
       {
-          this.errorM = "Incorrect password";
+          this.errorM = "Incorrect Username, Email, or password";
       }
       else
       {
         this.router.navigate(['/dashboard'])
       }
        })
+    
   }
 }
-// getUserGivenEmail(){
-//   this.userService.getUserGivenEmail(this.user.email).subscribe
-//   (responseBody =>{
-//     let getUserGivenEmail : User = responseBody
-//     if (getUserGivenEmail = !null)
-    
-//   })
-// }

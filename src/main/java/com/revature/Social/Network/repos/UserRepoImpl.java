@@ -34,7 +34,6 @@ public class UserRepoImpl implements UserRepo{
     @Override
     public Integer createUser(User user) {
         Session session =em.unwrap(Session.class);
-
         return (Integer) session.save(user);
     }
 
@@ -68,7 +67,6 @@ public class UserRepoImpl implements UserRepo{
     @Override
     public User getUserByUsername(String username) {
         Session session =em.unwrap(Session.class);
-
         return session.createQuery("from User where username = '" + username + "'",User.class).getSingleResult();
     }
 
@@ -92,7 +90,6 @@ public class UserRepoImpl implements UserRepo{
     @Override
     public User getUserGivenEmail(String email){
         Session session =em.unwrap(Session.class);
-
-        return session.createQuery("from User where email ='" + email + "'", User.class).getSingleResult();
+        return session.createQuery("from User where email = '" + email + "'", User.class).getSingleResult();
     }
 }
