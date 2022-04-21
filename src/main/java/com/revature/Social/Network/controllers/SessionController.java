@@ -2,6 +2,7 @@ package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.Session;
 import com.revature.Social.Network.models.User;
+import com.revature.Social.Network.services.ProfileService;
 import com.revature.Social.Network.services.UserService;
 
 import com.revature.Social.Network.utils.Hashing;
@@ -23,9 +24,21 @@ public class SessionController {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
+    private UserService userService;
+    @Autowired
+    public SessionController(UserService userService )
+    {
+        this.userService = userService;
+    }
+
     @PostMapping
     public ResponseEntity<User> login(HttpSession httpSession, @RequestBody User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        User user1 = this.userService.getUserGivenUsername(user.getUsername());
+        if (user1.getPassword() != user.getPassword())
+        {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+        }
         httpSession.setAttribute("sessionVar", user);
         return ResponseEntity.status(HttpStatus.OK).body(user);
 
