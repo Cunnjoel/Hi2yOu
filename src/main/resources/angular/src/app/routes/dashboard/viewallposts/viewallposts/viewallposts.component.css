@@ -1,7 +1,10 @@
-.List {
+.container-view {
+         display: flex;
+         justify-content: right;
+ }
+.item {
           display: flex;
           justify-content: center;
-          flex-wrap: wrap;
           background-color: lightblue;
           border: 2px solid black;
           height: 50px;
@@ -9,10 +12,9 @@
           border-radius: 10px;
           margin-top: 10px;
           padding-top: 10px;
+          margin-left: 150px;
 }
-body {
-margin-left:50px;
-}
+
 h2 {
    display: flex;
    justify-content: center;
