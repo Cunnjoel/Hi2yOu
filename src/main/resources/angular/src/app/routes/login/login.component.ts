@@ -13,11 +13,6 @@ export class LoginComponent implements OnInit {
 
   user: User = <User>{};
   errorM : string = "";
-<<<<<<< HEAD
-
-=======
-  currentUserLogin : User = <User>();
->>>>>>> 9931601d0519c5d1928ce9d9237faf8e85598048
 
   constructor(private userService : UserService, private router : Router, private sessionService: SessionService) { }
 
