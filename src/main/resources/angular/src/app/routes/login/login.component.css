@@ -1,0 +1,16 @@
+#body {
+    background-color: blue;
+  }
+  #login-container{
+      display: flex;
+      margin-top: 500px;
+      justify-content: space-evenly;
+  }
+  
+.btn{
+    background-color: aqua;
+    color: red;
+}
+.form-control{
+    width: 600px;
+}
