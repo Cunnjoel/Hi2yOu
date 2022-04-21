@@ -25,16 +25,14 @@ export class ViewallpostsComponent implements OnInit {
         });
      //}
   }
-<<<<<<< HEAD
 
-=======
+
   viewAllPosts(){
       this.postService.getAllPosts().subscribe(responseBody=>{
         this.postViewing = responseBody
         console.log(this.postViewing)
        });
     }
->>>>>>> 7df35ba6dbe9a0535b2baf0e3d54885a321d51c6
 }
 
 
