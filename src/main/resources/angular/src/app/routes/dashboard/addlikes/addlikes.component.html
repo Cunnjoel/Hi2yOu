@@ -1,6 +1,7 @@
 <div class="like-container">
-    
-    <button (click)="addLike()">Like</button>
-    <span><p>Post Id: {{postId}} </p></span>
+    <div *ngIf="isLiked">
+        <button (click)="addLike()">Like</button>
+    </div>
+    <span><p>Post Id: {{postId}} User Id: {{postUsers}}</p></span>
     
 </div>
