@@ -27,10 +27,12 @@ export class AddlikesComponent implements OnInit, OnChanges {
   constructor(private postService: PostService, private sessionService: SessionService) { }
   ngOnChanges() {
     this.checkLike();
+    this.likeCounter();
   }
 
   ngOnInit(): void {
     this.checkLike();
+    this.likeCounter();
   }
 
   @Input()
@@ -57,11 +59,10 @@ export class AddlikesComponent implements OnInit, OnChanges {
   }
 
   likeCounter(){
-    this.postView.users.forEach((element: { Count: () => number; }) => {
-      this.count = element.Count()
-    });
+    this.count = this.postView.users.length
+    }
   }
 
-}
+
 
 
