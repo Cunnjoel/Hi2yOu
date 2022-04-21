@@ -24,7 +24,7 @@ import { AddlikesComponent } from './routes/dashboard/addlikes/addlikes.componen
     DashboardcreatepostComponent,
     UpdateprofileComponent,
     ViewallpostsComponent,
-    AddlikesComponent,
+    AddlikesComponent
   ],
   imports: [
     BrowserModule,
