@@ -12,7 +12,9 @@ import { ProfileService } from 'src/app/services/profile.service';
 export class UpdateprofileComponent implements OnInit {
 
   file : File = <File>{};
+  fileUrl : any;
   profile : Profile = <Profile>{};
+  picture : boolean = false;
 
   constructor(private profileService : ProfileService, private router : Router) { }
 
@@ -25,6 +27,13 @@ export class UpdateprofileComponent implements OnInit {
   addFile(e : any)
   {
       this.file = e.target.files[0];
+      this.picture = true;
+      let reader = new FileReader();
+      reader.readAsDataURL(e.target.files[0])
+      reader.onload = (_e) =>
+      {
+        this.fileUrl = reader.result;
+      }
   }
 
   updateProfile()

@@ -12,7 +12,7 @@ import { UserService } from 'src/app/services/user.service';
 export class LoginComponent implements OnInit {
 
   user: User = <User>{};
-
+  errorM : string = "";
 
   constructor(private userService : UserService, private router : Router, private sessionService: SessionService) { }
 
@@ -20,15 +20,19 @@ export class LoginComponent implements OnInit {
   }
 
 userLogin(){
-  
-    this.userService.getByUsername(this.user.username).subscribe(responseBody =>{
-    let loginUser : User = responseBody 
-    console.log(loginUser)
-    if (loginUser !=null)
-    {this.sessionService.login(loginUser).subscribe(responseBody=>{
-      this.router.navigate(['/dashboard'])
-
-       })}
-     })
+    let user2 : User;
+    this.sessionService.login(this.user).subscribe(responseBody=>{
+      user2 = responseBody;
+      console.log(user2);
+      if (user2.userId == null)
+      {
+          this.errorM = "Incorrect Username, Email, or password";
+      }
+      else
+      {
+        this.router.navigate(['/dashboard'])
+      }
+       })
+    
   }
 }

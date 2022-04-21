@@ -1,7 +1,7 @@
-<p>dashboardcreatepost works!</p>
+
 <div id="post-container">
     <input type="text" [(ngModel)]="newPost.message">
     <button (click)="createPost()" >Make Post</button>
     <input type="file" (change)="createPicturePost($event)"/>
 </div>
-
+<app-viewallposts></app-viewallposts>

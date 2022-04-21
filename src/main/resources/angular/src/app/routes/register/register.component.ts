@@ -19,10 +19,10 @@ export class RegisterComponent implements OnInit {
   }
   registerUser()
   {
-    
     this.userService.create(this.user).subscribe(responseBody=>
       {
-        let newUser : User = responseBody
+        let newUser : User = responseBody;
+        newUser.password = this.user.password;
         this.sessionService.login(newUser).subscribe(responseBody=>{
           this.router.navigate(['/createprofile'])
         })

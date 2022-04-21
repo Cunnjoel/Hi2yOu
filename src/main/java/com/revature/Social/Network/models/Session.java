@@ -1,0 +1,14 @@
+package com.revature.Social.Network.models;
+
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+public class Session
+{
+    private String responseM;
+}

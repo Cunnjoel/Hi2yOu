@@ -26,30 +26,67 @@ public class UserController {
     }
 
     @PostMapping
-    public User createUser(@RequestBody User user){
-        return  userService.createUser(user);
+    public User createUser(@RequestBody User user)
+    {
+        try
+        {
+            return userService.createUser(user);
+        }
+        catch (Exception e)
+        {
+            logger.warn("Stack Trace?", e);
+            return new User();
+        }
     }
+
 
 
     @PutMapping
-    public User updateUser(@RequestBody User user){
-        return userService.updateUser(user);
+    public User updateUser(@RequestBody User user)
+    {
+        try
+        {
+            return userService.updateUser(user);
+        }catch (Exception e){
+
+            logger.warn("Stack Trace?", e);
+            return new User();
+        }
     }
     @DeleteMapping("{userId}")
     public String deleteUser(@PathVariable Integer userId){
-        userService.deleteUser(userId);
+        try
+        {
+            userService.deleteUser(userId);
+            return "the user with the id" + userId + "was successfully deleted";
+        }
+        catch(Exception e)
+        {
+            logger.warn("Stack Trace?", e);
+            return "Couldn't find user to delete";
+        }
 
-        return "the user with the id" + userId + "was successfully deleted";
     }
 
 
     @GetMapping("username/{username}")
     public User getUserGivenUsername(@PathVariable String username){
-        return this.userService.getUserGivenUsername(username);
+
+        try{
+            return userService.getUserGivenUsername(username);
+        }catch (Exception e){
+            logger.warn("Stack Trace?",e);
+            return new User();
+        }
     }
 
     @GetMapping("email/{email}")
     public User getUserGivenEmail(@PathVariable String email){
-        return this.userService.getUserGivenEmail(email);
+        try{
+            return userService.getUserGivenEmail(email);
+        }catch (Exception e){
+            logger.warn("Stack Trace?", e);
+            return new User();
+        }
     }
 }
