@@ -2,8 +2,8 @@ package com.revature.Social.Network.services;
 
 import com.revature.Social.Network.models.User;
 import com.revature.Social.Network.repos.UserRepo;
+import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -17,7 +17,7 @@ public class UserService {
     private UserRepo userRepo;
 
     @Autowired
-    public PasswordEncoder passwordEncoder;
+    public BasicPasswordEncryptor passwordEncoder;
 
     public List<User> getAll(){
         return userRepo.getAll();
@@ -28,9 +28,12 @@ public class UserService {
 
     public User createUser (User user){
         Integer userId = userRepo.createUser(user);
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        User userFromDb = userRepo.getOne(userId);
-        return userFromDb;
+        user.setPassword(passwordEncoder.encryptPassword(user.getPassword()));
+        if (userId == null)
+        {
+            return null;
+        }
+        return this.getUserById(userId);
     }
     public User updateUser (User user){
         userRepo.updateUser(user);
@@ -51,7 +54,6 @@ public class UserService {
         return userRepo.getOne(userId);
     }
     public User getUserGivenEmail(String email){
-
         return userRepo.getUserGivenEmail(email);
     }
 }
