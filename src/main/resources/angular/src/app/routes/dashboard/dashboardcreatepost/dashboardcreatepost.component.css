@@ -1,9 +1,24 @@
-.post-container{
-  
-  margin-left: 300px;
-  width: 4000px;
+*{
+  font-weight: bolder;
+  color: yellow;
 }
- h2{
+.input-image{
+  color: black;
+}
+.input-container{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.input-post{
+  color: black;
+}
+
+.post-container{
+  margin-left: 1000px;
+ 
+}
+ h1{
   display: flex;
   justify-content: center;
   color: yellow;
@@ -16,7 +31,7 @@
   }
   
   .box {
-    top: 80%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;

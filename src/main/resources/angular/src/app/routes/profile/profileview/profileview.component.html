@@ -1,3 +1,4 @@
+<div class ="overflow">
 <div class="container center">
     <form *ngIf="this.profileViewing.user"> 
         <div id="title">Profile View Page</div>
@@ -6,16 +7,18 @@
         <div>Username: {{profileViewing.user.username}}</div>
         <div>Email: {{profileViewing.user.email}}</div>
         <div>First Name: {{profileViewing.firstName}}</div>
-        <div>Middle Init: {{profileViewing.middleInit}}</div>
+        <div>Middle Initial: {{profileViewing.middleInit}}</div>
         <div>Last Name: {{profileViewing.lastName}}</div>
         <div>Birthday: {{profileViewing.birthday}}</div>
         <div>City: {{profileViewing.city}}</div>
         <div>State: {{profileViewing.state}}</div>
         <div>About Me: {{profileViewing.aboutMe}}</div>
-        <button *ngIf="buttonOn" (click)="updateProfile()" id="updatebutton">Update Profile</button>
+        <button class ="prof-view"*ngIf="buttonOn" (click)="updateProfile()" id="updatebutton">Update Profile</button>
+        <i></i>
         </div>
     </form>
     <app-view-profile-posts [userId]="this.userId"></app-view-profile-posts>
+</div>
 </div>
 <!-- <div class="box"(click)="userLogin()">
                 <span>Login!</span>

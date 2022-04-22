@@ -1,0 +1,15 @@
+.one-drop{
+    object-fit: contain;
+}
+.drop-img{
+    height: 8px;
+    width: 3px;
+}
+.one-drop:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    box-shadow: (0,0,4px,black);
+}
+.one-drop:active{
+    transform: scale(.9);
+}

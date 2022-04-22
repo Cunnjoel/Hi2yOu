@@ -12,11 +12,13 @@
     width: 600px;
 }
 .h3{
-    color: white;
+    color: yellow;
+    font-weight: bolder;
 }
 .sr-only{
     font-size: xx-large;
-    color: white;
+    color: yellow;
+    font-weight: bolder;
 }
 
 * {
