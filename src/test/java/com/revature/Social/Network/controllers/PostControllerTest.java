@@ -32,12 +32,13 @@ class PostControllerTest {
         //arrange
         User user = new User(1, "fname", "lname", "email");
         Post post = new Post(1, "Message1", " ", null, null, user);
-
         //act
-        postController.createPost(post);
+        Post newpost = postController.createPost(post);
+
+        Post actualpost = postService.createPost(post);
 
         //assert
-        Mockito.verify(postService, Mockito.times(1)).createPost(post);
+        assertEquals(newpost,actualpost);
 
 
     }

@@ -16,21 +16,29 @@ export class ViewallpostsComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
-   // viewAllPosts(){
         this.postService.getAllPosts().subscribe(responseBody=>{
           
           this.postViewing = responseBody;   
-          console.log(this.postViewing[0].pictureURL);
+         
         });
-     //}
+ 
   }
+<<<<<<< HEAD
   viewAllPosts(){
       this.postService.getAllPosts().subscribe(responseBody=>{
         this.postViewing = responseBody
         console.log(this.postViewing)
        });
     }
+=======
+
+
+  // viewAllPosts(){
+  //     this.postService.getAllPosts().subscribe(responseBody=>{
+  //       this.postViewing = responseBody
+  //      });
+  //   }
+>>>>>>> 94dd26afbbfd060cdb73476d15c64c99044c394d
 }
 
 
