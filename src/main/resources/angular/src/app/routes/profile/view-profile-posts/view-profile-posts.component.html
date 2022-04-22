@@ -1,12 +1,12 @@
 <!--<button (click)="viewAllPosts()">view Post</button> -->
-     <div class="container-vtew" >
+     <div class="container-view" >
         <div *ngFor="let msg of postViewing">
             <div *ngIf="msg.pictureURL">
                   <img [src] = msg.pictureURL alt="Post Pic" id="Post Pic">
             </div>  
             <div class="item">
                 {{msg.message}}   
-                <button (click)=" viewUsersProfle(msg.user.userId)">{{msg.user.username}}</button>      
+                <button class ="the-user"(click)=" viewUsersProfle(msg.user.userId)">{{msg.user.username}}</button>      
                 <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
             </div>        
         </div>
