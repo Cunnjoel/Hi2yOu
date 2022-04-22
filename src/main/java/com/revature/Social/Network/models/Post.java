@@ -28,7 +28,7 @@ public class Post {
     @Column
     private String pictureURL;
 
-    @OneToMany
+    @ManyToMany
     private List<User> users = new ArrayList<>();
 
     @CreationTimestamp

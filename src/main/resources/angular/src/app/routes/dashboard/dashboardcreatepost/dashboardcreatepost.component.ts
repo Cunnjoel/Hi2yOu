@@ -25,6 +25,8 @@ export class DashboardcreatepostComponent implements OnInit {
   }
 
   reset() {
+    this.file = <File>{};
+    this.newPost = <Post>{};
     this.picInputVariable.nativeElement.value = "";
   }
 
@@ -45,8 +47,6 @@ export class DashboardcreatepostComponent implements OnInit {
           }
           else{
             this.postService.makePost = responseBody;
-  
-            this.newPost.message = ' ';
             this.errorM = "";
             this.reset();
             this.viewAllPosts();

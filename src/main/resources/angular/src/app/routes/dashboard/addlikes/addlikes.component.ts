@@ -41,9 +41,10 @@ export class AddlikesComponent implements OnInit, OnChanges {
       this.newLike.user = responseBody;
       this.postService.addLike(this.postId, this.newLike.user.userId).subscribe(responseBody => {
         this.postService.makeLike = responseBody
+        this.isLiked = false;
+        this.checkLike();
+        this.likeCounter();
       })
-      this.isLiked = false;
-      this.checkLike();
     })
   }
 
@@ -59,7 +60,9 @@ export class AddlikesComponent implements OnInit, OnChanges {
   }
 
   likeCounter(){
-    this.count = this.postView.users.length
+    this.postService.getAllLikes(this.postId).subscribe(responseBody=>{
+      this.count = responseBody.length;
+    })
     }
   }
 
