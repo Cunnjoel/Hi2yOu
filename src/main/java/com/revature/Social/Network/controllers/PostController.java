@@ -99,8 +99,11 @@ public class PostController {
     public Picture uploadPostPic(@RequestParam(value = "file",required = false) MultipartFile file)
     {
         Picture picture;
+
         if (file != null)
         {
+
+
             System.out.println(file.getOriginalFilename());
             picture = new Picture(this.postService.uploadPostPic(file));
         }
