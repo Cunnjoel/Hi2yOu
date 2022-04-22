@@ -92,7 +92,7 @@ public class PostController {
 
     }
 
-    @PatchMapping("{postId}/user/{userId}")
+    @PutMapping("{postId}/user/{userId}")
     public void addLike(@PathVariable Integer postId, @PathVariable Integer userId)
     {
         try
