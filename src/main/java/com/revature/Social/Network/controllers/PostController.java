@@ -95,12 +95,13 @@ public class PostController {
     @PutMapping("{postId}/user/{userId}")
     public void addLike(@PathVariable Integer postId, @PathVariable Integer userId)
     {
-        try
+        postService.addLike(postId, userService.getUserById(userId));
+        /*try
         {
             postService.addLike(postId, userService.getUserById(userId));
         }catch (Exception e){
             logger.warn("stack?, e");
-        }
+        }*/
     }
 
     @GetMapping("{postId}/likes")

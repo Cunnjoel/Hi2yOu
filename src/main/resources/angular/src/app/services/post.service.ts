@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Post } from '../models/Post'
+import { User } from '../models/User';
 
 
 @Injectable({
@@ -40,7 +41,7 @@ export class PostService {
   }
 
   getAllLikes(id: number){
-    return this.httpCli.get<Post>(`http://localhost:9000/post/${id}/likes`);
+    return this.httpCli.get<User[]>(`http://localhost:9000/post/${id}/likes`);
   }
 
   uploadPostPic(image : FormData){
