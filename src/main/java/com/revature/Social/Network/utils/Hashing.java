@@ -8,7 +8,8 @@ import org.springframework.stereotype.Component;
 public class Hashing {
 
     @Bean
-    public BasicPasswordEncryptor encoder(){
+    public BasicPasswordEncryptor encryptor()
+    {
         return new BasicPasswordEncryptor();
     }
 }
