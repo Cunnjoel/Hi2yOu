@@ -13,6 +13,7 @@ import { UpdateprofileComponent } from './routes/profile/updateprofile/updatepro
 import { ViewallpostsComponent} from './routes/dashboard/viewallposts/viewallposts/viewallposts.component';
 import { AddlikesComponent } from './routes/dashboard/addlikes/addlikes.component';
 import { LoggedInGuardsGuard } from './guards/logged-in-guards.guard';
+import { ViewProfilePostsComponent } from './routes/profile/view-profile-posts/view-profile-posts.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { LoggedInGuardsGuard } from './guards/logged-in-guards.guard';
     DashboardcreatepostComponent,
     UpdateprofileComponent,
     ViewallpostsComponent,
-    AddlikesComponent
+    AddlikesComponent,
+    ViewProfilePostsComponent
   ],
   imports: [
     BrowserModule,

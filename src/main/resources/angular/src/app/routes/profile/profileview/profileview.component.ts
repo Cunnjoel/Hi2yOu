@@ -14,6 +14,7 @@ export class ProfileviewComponent implements OnInit {
 
   profileViewing : Profile = <Profile>{};
   id : number = 0;
+  userId : number = 0;
   buttonOn : boolean = false;
 
   constructor(private profileService : ProfileService , private router : Router, private sessionService : SessionService) { }
@@ -43,7 +44,7 @@ export class ProfileviewComponent implements OnInit {
   {
     this.profileService.getProfileById(id).subscribe(responseBody=>{
     this.profileViewing = responseBody;
-    
+    this.userId = this.profileViewing.user.userId;
     this.checkIfUsersProfile();
     console.log(this.profileViewing)
     });
@@ -53,6 +54,7 @@ export class ProfileviewComponent implements OnInit {
   {
     this.profileService.getProfileByUserId(userId).subscribe(responseBody=>{
     this.profileViewing = responseBody;
+    this.userId = userId;
     this.checkIfUsersProfile();
     console.log(this.profileViewing)
     });
