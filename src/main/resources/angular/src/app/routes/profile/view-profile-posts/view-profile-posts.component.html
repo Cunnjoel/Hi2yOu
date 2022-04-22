@@ -1,12 +1,14 @@
-  <div class = "overflow">
+<h2>View All Posts</h2>
+<!--<button (click)="viewAllPosts()">view Post</button> -->
+     <div class="container-vtew" >
         <div *ngFor="let msg of postViewing">
             <div *ngIf="msg.pictureURL">
                   <img [src] = msg.pictureURL alt="Post Pic" id="Post Pic">
             </div>  
             <div class="item">
                 {{msg.message}}   
-                <button class ="user-prof" (click)=" viewUsersProfle(msg.user.userId)">{{msg.user.username}}</button>      
+                <button (click)=" viewUsersProfle(msg.user.userId)">{{msg.user.username}}</button>      
                 <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
             </div>        
         </div>
-    </div>
+    <div>
