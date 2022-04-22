@@ -35,6 +35,6 @@
             <textarea rows="20" cols="50" [(ngModel)]="newProfile.aboutMe" id="aboutMe" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         <div *ngIf="this.errorM">{{this.errorM}}</div>
-        <button (click)="createProfile()" id="createButtn">Create Profile</button>
+        <button class = "prof-create" (click)="createProfile()" id="createButtn">Create Profile</button>
     </form>
 </div>
