@@ -25,8 +25,8 @@ export class UserService {
     return this.httpCli.post<User>(baseUrl, data);
   }
 
-  update(id: any, data: any){
-    return this.httpCli.put(`${baseUrl}/${id}`, data)
+  update(data: any){
+    return this.httpCli.put<User>(`${baseUrl}`, data)
   }
 
   getByUsername(username: string){

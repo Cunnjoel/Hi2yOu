@@ -1,6 +1,8 @@
 <div class="like-container">
     <div *ngIf="isLiked">
-        <button (click)="addLike()">Like</button>
+        <div class="drop-img">
+        <img class="one-drop" src="../../../../assets/waterdrop.png" (click)="addLike()">
+        </div>
     </div>
     <div>{{count}}</div>
 </div>

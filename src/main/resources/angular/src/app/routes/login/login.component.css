@@ -8,7 +8,8 @@ body{
  } 
 #login-card{
     margin-top: 22%;
-    color: white;
+    color: yellow;
+    font-weight: bolder;
     
 }
 #login-container{
@@ -18,6 +19,7 @@ body{
 }
 .h3{
     font-size: xx-large;
+    font-weight: bolder;
 }
 .sr-only{
     font-size: xx-large;
