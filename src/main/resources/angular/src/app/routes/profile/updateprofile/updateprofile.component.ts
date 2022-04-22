@@ -15,6 +15,7 @@ export class UpdateprofileComponent implements OnInit {
   fileUrl : any;
   profile : Profile = <Profile>{};
   picture : boolean = false;
+  errorM : string = "";
 
   constructor(private profileService : ProfileService, private router : Router) { }
 
@@ -47,9 +48,9 @@ export class UpdateprofileComponent implements OnInit {
           this.profile.pictureUrl = "https://" + reponseBody.fileUrl;
         }
         this.profileService.updateProfile(this.profile).subscribe(responseBody=>{
-            this.profileService.currentUserProfile = responseBody;
-            this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
-        });
+          this.profileService.currentUserProfile = responseBody;
+          this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
+      });
       });
   }
 }
