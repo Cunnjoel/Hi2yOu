@@ -16,6 +16,7 @@
 }
 .center form #title
 {
+    color: white;
     font-size: 50px;
     text-decoration: underline;
 }
@@ -31,6 +32,7 @@
 }
 .center form div
 {
+    color: white;
     font-size: 30px;
 }
 .center form #aboutMe
