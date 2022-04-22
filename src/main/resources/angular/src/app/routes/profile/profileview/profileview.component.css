@@ -13,11 +13,13 @@
 .center form div
 {
     margin-top: 20px;
+    color:white;
 }
 .center form #title
 {
     font-size: 50px;
     text-decoration: underline;
+    color: white;
 }
 .center form button
 {
@@ -28,6 +30,7 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
+    color:white
 }
 .center form div
 {

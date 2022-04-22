@@ -15,20 +15,28 @@ export class DashboardcreatepostComponent implements OnInit {
   posts : Post[] = [];
   errorM : string = "";
   file: File = <File>{};
+  message: string = "";
+  @ViewChild('picInput')
+  picInputVariable!: ElementRef;
 
   constructor(private postService: PostService, private sessionService: SessionService) { }
 
   ngOnInit(): void {
   }
-  
+
+  reset() {
+    this.picInputVariable.nativeElement.value = "";
+  }
+
   createPost() {
+    this.message = " "
     let formData: FormData = new FormData();
     formData.append('file', this.file);
     this.postService.uploadPostPic(formData).subscribe(responseBody => {
-      if(responseBody != null){
-        this.newPost.pictureURL = "https://"+ responseBody.fileUrl;
+      if (responseBody != null) {
+        this.newPost.pictureURL = "https://" + responseBody.fileUrl;
       }
-      this.sessionService.checkSession().subscribe(responseBody=>{
+      this.sessionService.checkSession().subscribe(responseBody => {
         this.newPost.user = responseBody;
         this.postService.createPost(this.newPost).subscribe(responseBody => {
           if (responseBody.id == null)
@@ -40,17 +48,17 @@ export class DashboardcreatepostComponent implements OnInit {
   
             this.newPost.message = ' ';
             this.errorM = "";
+            this.reset();
             this.viewAllPosts();
           }
         });
       });
-      
     });
-
-
   }
+
   createPicturePost(e: any) {
     this.file = e.target.files[0];
+
   }
   viewAllPosts(){
     this.postService.getAllPosts().subscribe(responseBody=>{
@@ -60,7 +68,3 @@ export class DashboardcreatepostComponent implements OnInit {
      });
   }
 }
-
-
-
-
