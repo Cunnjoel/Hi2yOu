@@ -23,10 +23,14 @@ public class PostService {
     public PostService(PostRepo postRepo) { this.postRepo = postRepo; }
 
 
-    public void createPost(Post post)
+    public Post createPost(Post post)
     {
-         this.postRepo.createPost(post);
-
+        Integer id = this.postRepo.createPost(post);
+        if (id == null)
+        {
+            return null;
+        }
+        return this.getOne(id);
     }
     public List<Post> getAllPosts(){ return this.postRepo.getAllPosts();
     }

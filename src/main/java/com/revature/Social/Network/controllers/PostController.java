@@ -27,8 +27,17 @@ public class PostController {
     public PostController(PostService postService, UserService userService) { this.postService = postService; this.userService = userService; }
 
     @PostMapping
-    public void createPost(@RequestBody Post post) {
-        postService.createPost(post);
+    public Post createPost(@RequestBody Post post)
+    {
+        try
+        {
+            return postService.createPost(post);
+        }
+        catch(Exception e)
+        {
+            logger.warn("Stack Trace?", e);
+            return new Post();
+        }
     }
 
     @GetMapping("/user/{userId}")

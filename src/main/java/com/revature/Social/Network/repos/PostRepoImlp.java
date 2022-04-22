@@ -26,9 +26,9 @@ public class PostRepoImlp implements PostRepo{
      * @param post post object is passed in order to create the new post's entry
      */
     @Override
-    public void createPost(Post post) {
+    public Integer createPost(Post post) {
         Session session = em.unwrap(Session.class);
-        session.save(post);
+        return (Integer) session.save(post);
 
     }
     /**
