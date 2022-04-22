@@ -13,6 +13,8 @@ export class AddlikesComponent implements OnInit, OnChanges {
 
   isLiked: boolean = true;
 
+  count: number = 0; 
+
   @Input()
   postId!: number;
 
@@ -25,10 +27,12 @@ export class AddlikesComponent implements OnInit, OnChanges {
   constructor(private postService: PostService, private sessionService: SessionService) { }
   ngOnChanges() {
     this.checkLike();
+    this.likeCounter();
   }
 
   ngOnInit(): void {
     this.checkLike();
+    this.likeCounter();
   }
 
   @Input()
@@ -46,17 +50,19 @@ export class AddlikesComponent implements OnInit, OnChanges {
   checkLike() {
     this.sessionService.checkSession().subscribe(responseBody => {
       this.newLike.user = responseBody;
-      console.log(this.postView.users);
-      console.log(this.newLike.user.userId);
       this.postView.users.forEach((element: { userId: number; }) => {
         if(element.userId === this.newLike.user.userId){
           this.isLiked = false;
         }
       });
     })
-  
   }
 
-}
+  likeCounter(){
+    this.count = this.postView.users.length
+    }
+  }
+
+
 
 

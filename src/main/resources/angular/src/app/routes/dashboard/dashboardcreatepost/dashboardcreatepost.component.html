@@ -5,6 +5,6 @@
         <span>Make A New Post!</span>
         <i></i>
       </div>
-    <input type="file" (change)="createPicturePost($event)"/>
+    <input #picInput type="file" (change)="createPicturePost($event)"/>
 </div>
 <app-viewallposts></app-viewallposts>
