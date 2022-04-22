@@ -2,10 +2,8 @@ package com.revature.Social.Network.controllers;
 
 import com.revature.Social.Network.models.Session;
 import com.revature.Social.Network.models.User;
-import com.revature.Social.Network.services.ProfileService;
 import com.revature.Social.Network.services.UserService;
 
-import com.revature.Social.Network.utils.Hashing;
 import org.apache.log4j.Logger;
 import org.jasypt.util.password.BasicPasswordEncryptor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -51,7 +49,7 @@ public class SessionController {
                 user1 = new User();
             }
         }
-        if (user1.getUserId() == null || passwordEncoder.checkPassword(user.getPassword(),user1.getPassword()) == false)
+        if (user1.getUserId() == null || passwordEncoder.checkPassword(user.getPassword(), user1.getPassword()) == false)
         {
             httpSession.setAttribute("sessionVar",null);
             return ResponseEntity.status(HttpStatus.OK).body(new User());
