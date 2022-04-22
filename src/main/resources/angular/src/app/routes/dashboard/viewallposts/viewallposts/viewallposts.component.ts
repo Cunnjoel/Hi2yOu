@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Post } from 'src/app/models/Post';
 
 import { PostService } from 'src/app/services/post.service';
@@ -9,7 +9,8 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./viewallposts.component.css']
 })
 
-export class ViewallpostsComponent implements OnInit {
+export class ViewallpostsComponent implements OnInit{
+  @Input() 
   postViewing : Array<Post>=[];
   constructor(private postService : PostService) { }
   
@@ -19,26 +20,10 @@ export class ViewallpostsComponent implements OnInit {
         this.postService.getAllPosts().subscribe(responseBody=>{
           
           this.postViewing = responseBody;   
-         
+          this.postViewing.sort((a,b) => b.id - a.id)
         });
  
   }
-<<<<<<< HEAD
-  viewAllPosts(){
-      this.postService.getAllPosts().subscribe(responseBody=>{
-        this.postViewing = responseBody
-        console.log(this.postViewing)
-       });
-    }
-=======
-
-
-  // viewAllPosts(){
-  //     this.postService.getAllPosts().subscribe(responseBody=>{
-  //       this.postViewing = responseBody
-  //      });
-  //   }
->>>>>>> 94dd26afbbfd060cdb73476d15c64c99044c394d
 }
 
 

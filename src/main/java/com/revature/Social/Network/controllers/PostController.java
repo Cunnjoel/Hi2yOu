@@ -34,14 +34,29 @@ public class PostController {
     @PostMapping
     public Post createPost(@RequestBody Post post)
     {
-        try
+        if (post.getPictureURL() == null && (post.getMessage() == null || post.getMessage() == ""))
         {
-            return postService.createPost(post);
+            try
+            {
+                throw new Exception("Requires a picture or mesage to make a post");
+            }
+            catch(Exception e)
+            {
+                logger.warn("Stack Trace?", e);
+                return new Post();
+            }
         }
-        catch (Exception e)
+        else
         {
-            logger.warn("Stack Trace?", e);
-            return new Post();
+            try
+            {
+                return postService.createPost(post);
+            }
+            catch (Exception e)
+            {
+                logger.warn("Stack Trace?", e);
+                return new Post();
+            }
         }
     }
 

@@ -15,8 +15,6 @@ export class ProfilecreateComponent implements OnInit {
   fileUrl : any;
   newProfile : Profile = <Profile>{};
   errorM : string = "";
-  currentProfile : Profile = <Profile>{};
-
   constructor(private profileService : ProfileService, private router : Router, private sessionService : SessionService) { }
 
   ngOnInit(): void {

@@ -1,25 +1,16 @@
-<<<<<<< HEAD
-=======
-
->>>>>>> 94dd26afbbfd060cdb73476d15c64c99044c394d
 <h2>View All Posts</h2>
 <!--<button (click)="viewAllPosts()">view Post</button> -->
      <div class="container-vtew" >
         <div *ngFor="let msg of postViewing">
-            <div *ngif="!msg.pictureURL">
+            <div *ngIf="msg.pictureURL">
                   <img [src] = msg.pictureURL alt="Post Pic" id="Post Pic">
             </div>  
             <div class="item">
-<<<<<<< HEAD
-                    {{msg.message}}
-            </div>
-=======
                 {{msg.message}}         
                 <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
             </div>        
         </div>
 
->>>>>>> 94dd26afbbfd060cdb73476d15c64c99044c394d
       </div>
       
     
