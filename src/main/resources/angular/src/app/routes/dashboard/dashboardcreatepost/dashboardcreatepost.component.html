@@ -2,7 +2,7 @@
 <div id="post-container">
     <input type="text" [(ngModel)]="newPost.message">
     <button (click)="createPost()" >Make Post</button>
-    <input type="file" (change)="createPicturePost($event)"/>
+    <input #picInput type="file" (change)="createPicturePost($event)"/>
     <div>{{message}}</div>
 </div>
 <app-viewallposts></app-viewallposts>
