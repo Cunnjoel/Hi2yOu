@@ -17,12 +17,10 @@ export class PostService {
 
   createPost(post : Post){
     return this.httpCli.post<Post>(`http://localhost:9000/post`,post);
-    console.log(post)
   }
 
   getPostByUserId(userId : number){
-  console.log(userId)
-    return this.httpCli.get<Post>(`http://localhost:9000/post/${userId}`);
+    return this.httpCli.get<Post[]>(`http://localhost:9000/post/user/${userId}`);
   }
 
   getAllPosts(){
