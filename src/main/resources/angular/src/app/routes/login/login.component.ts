@@ -23,7 +23,6 @@ userLogin(){
     let user2 : User;
     this.sessionService.login(this.user).subscribe(responseBody=>{
       user2 = responseBody;
-      console.log(user2);
       if (user2.userId == null)
       {
           this.errorM = "Incorrect Username, Email, or password";
