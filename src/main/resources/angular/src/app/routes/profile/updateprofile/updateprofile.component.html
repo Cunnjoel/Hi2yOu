@@ -35,6 +35,6 @@
             <textarea rows="20" cols="50" placeholder="{{profile.aboutMe}}" [(ngModel)]="profile.aboutMe" id="aboutMe" [ngModelOptions]="{standalone: true}"></textarea>
         </div>
         <div *ngIf="this.errorM">{{this.errorM}}</div>
-        <button (click)="updateProfile()" id="updateButton">Update Profile</button>
+        <button class = "update-prof" (click)="updateProfile()" id="updateButton">Update Profile</button>
     </form>
 </div>

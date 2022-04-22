@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { Profile } from 'src/app/models/Profile';
 import { User } from 'src/app/models/User';
 import { ProfileService } from 'src/app/services/profile.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-updateprofile',
@@ -18,7 +17,7 @@ export class UpdateprofileComponent implements OnInit {
   picture : boolean = false;
   errorM : string = "";
 
-  constructor(private profileService : ProfileService, private router : Router,private userService : UserService) { }
+  constructor(private profileService : ProfileService, private router : Router) { }
 
   ngOnInit(): void {
     this.profileService.getProfileById(this.profileService.getIdNumberFromUrl(this.router.url,15)).subscribe(responseBody=>{
@@ -48,21 +47,10 @@ export class UpdateprofileComponent implements OnInit {
         {
           this.profile.pictureUrl = "https://" + reponseBody.fileUrl;
         }
-        this.userService.update(this.profile.user).subscribe(responseBody=>
-          {
-            this.profile.user = responseBody;
-            if (this.profile.user.userId == null)
-            {
-              this.errorM = "Username already taken"
-            }
-            else
-            {
-              this.profileService.updateProfile(this.profile).subscribe(responseBody=>{
-                this.profileService.currentUserProfile = responseBody;
-                this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
-            });
-            }
-          })
+        this.profileService.updateProfile(this.profile).subscribe(responseBody=>{
+          this.profileService.currentUserProfile = responseBody;
+          this.router.navigate(['/viewprofile/user/' + this.profileService.currentUserProfile.id])
+      });
       });
   }
 }

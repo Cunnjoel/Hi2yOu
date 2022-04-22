@@ -1,3 +1,29 @@
+*{
+  font-weight: bolder;
+  color: yellow;
+}
+.input-image{
+  color: black;
+}
+.input-container{
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+.input-post{
+  color: black;
+}
+
+.post-container{
+  margin-left: 1000px;
+ 
+}
+ h1{
+  display: flex;
+  justify-content: center;
+  color: yellow;
+  font-weight: bolder;
+}
 * {
     margin: 0;
     padding: 0;
@@ -5,7 +31,7 @@
   }
   
   .box {
-    top: 80%;
+    top: 20%;
     left: 50%;
     transform: translate(-50%, -50%);
     position: absolute;
