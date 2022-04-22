@@ -23,22 +23,11 @@ export class ViewallpostsComponent implements OnInit {
         });
  
   }
-<<<<<<< .merge_file_a25368
   viewAllPosts(){
       this.postService.getAllPosts().subscribe(responseBody=>{
         this.postViewing = responseBody
         console.log(this.postViewing)
        });
     }
-=======
 
-
-  // viewAllPosts(){
-  //     this.postService.getAllPosts().subscribe(responseBody=>{
-  //       this.postViewing = responseBody
-  //      });
-  //   }
->>>>>>> .merge_file_a25244
 }
-
-
