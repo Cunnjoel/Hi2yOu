@@ -1,6 +1,7 @@
 <div class="container center">
     <form *ngIf="this.profileViewing.user"> 
         <div id="title">Profile View Page</div>
+        <div class = "profile-info">
         <img [src]="profileViewing.pictureUrl" alt="Profile Pics" id="profilePic">
         <div>Profile Id: {{profileViewing.id}}</div>
         <div>Profile Picture Url: {{profileViewing.pictureUrl}}</div>
@@ -14,5 +15,6 @@
         <div>State: {{profileViewing.state}}</div>
         <div>About Me: {{profileViewing.aboutMe}}</div>
         <button *ngIf="buttonOn" (click)="updateProfile()" id="updatebutton">Update Profile</button>
+        </div>
     </form>
 </div>
