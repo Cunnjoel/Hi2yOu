@@ -32,13 +32,31 @@ public class PostController {
     public PostController(PostService postService, UserService userService) { this.postService = postService; this.userService = userService; }
 
     @PostMapping
-
-    public void createPost(@RequestBody Post post) {
-        try {
-
-            postService.createPost(post);
-        }catch (Exception e){
-            logger.warn("stack?, e");
+    public Post createPost(@RequestBody Post post)
+    {
+        if (post.getPictureURL() == null && (post.getMessage() == null || post.getMessage() == ""))
+        {
+            try
+            {
+                throw new Exception("Requires a picture or mesage to make a post");
+            }
+            catch(Exception e)
+            {
+                logger.warn("Stack Trace?", e);
+                return new Post();
+            }
+        }
+        else
+        {
+            try
+            {
+                return postService.createPost(post);
+            }
+            catch (Exception e)
+            {
+                logger.warn("Stack Trace?", e);
+                return new Post();
+            }
         }
     }
 
@@ -74,7 +92,7 @@ public class PostController {
 
     }
 
-    @PatchMapping("{postId}/user/{userId}")
+    @PutMapping("{postId}/user/{userId}")
     public void addLike(@PathVariable Integer postId, @PathVariable Integer userId)
     {
         try
