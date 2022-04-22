@@ -1,13 +1,14 @@
-<h2>What's Everyone Saying?</h2>
-<button (click)="viewAllPosts()">View The Latest Buzz</button>
-      <div *ngFor="let msg of postViewing; let i = index">
-        <img [src] = "msg.pictureURL" alt="Post Pic" id="Post Pic"> 
-        <div class="item">
-         
-           
-            {{i + 1}} :      {{msg.message}}
-            <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
-          </div> 
+<h2>View All Posts</h2>
+<!--<button (click)="viewAllPosts()">view Post</button> -->
+     <div class="container-vtew" >
+        <div *ngFor="let msg of postViewing">
+            <div *ngIf="msg.pictureURL">
+                  <img [src] = msg.pictureURL alt="Post Pic" id="Post Pic">
+            </div>  
+            <div class="item">
+                {{msg.message}}         
+                <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
+            </div>        
         </div>
 
     <div>

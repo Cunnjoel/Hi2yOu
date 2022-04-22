@@ -18,7 +18,6 @@ const routes: Routes = [
   {path: 'viewprofile/:id', component : ProfileviewComponent,canActivate: [LoggedInGuardsGuard]},
   {path: 'viewprofile/user/:id', component : ProfileviewComponent,canActivate: [LoggedInGuardsGuard]},
   {path: 'dashboard', component: DashboardcreatepostComponent,canActivate: [LoggedInGuardsGuard]},
-  {path: 'viewposts', component: ViewallpostsComponent,canActivate: [LoggedInGuardsGuard]},
   {path: "**", redirectTo: ""}
 ];
 
