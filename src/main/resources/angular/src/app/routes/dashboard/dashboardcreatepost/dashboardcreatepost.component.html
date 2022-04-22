@@ -1,11 +1,12 @@
 <h2>What's On Your Mind? Post About It!</h2>
-<div id="post-container">
+<div class = "post-container">
     <div *ngIf="this.errorM">{{this.errorM}}</div>
     <input type="text" [(ngModel)]="newPost.message">
+  </div>
     <div class="box"(click)="createPost()">
         <span>Make A New Post!</span>
         <i></i>
       </div>
     <input #picInput type="file" (change)="createPicturePost($event)"/>
-</div>
+
 <app-viewallposts [postViewing]="posts"></app-viewallposts>
