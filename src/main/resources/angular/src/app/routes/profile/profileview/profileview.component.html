@@ -15,4 +15,5 @@
         <button *ngIf="buttonOn" (click)="updateProfile()" id="updatebutton">Update Profile</button>
         </div>
     </form>
+    <app-view-profile-posts [userId]="this.userId"></app-view-profile-posts>
 </div>
