@@ -6,7 +6,8 @@
                   <img [src] = msg.pictureURL alt="Post Pic" id="Post Pic">
             </div>  
             <div class="item">
-                {{msg.message}}         
+                {{msg.message}}   
+                <button (click)=" viewUsersProfle(msg.user.userId)">{{msg.user.username}}</button>      
                 <app-addlikes [postView]="msg" [postId]="msg.id" [postUsers]="msg.users"></app-addlikes>
             </div>        
         </div>
