@@ -17,6 +17,16 @@ Joel Cunningham:
   - Accessed API endpoints using HttpClient
   - Used Spring MVC for request/response post handling 
 
+Zachary Starkey:
+  - Worked using Intellij IDEA 2021 and Visual Studio Code for development
+  - Created profile creating/viewing/updating web pages using HTML, CSS, and Typescript
+  - Used Java for the creation of the backend
+  - Utilized github for source control system
+  - Used H2 for database hile developing
+  - Used Mockito and JUnit to test profile service and controller layer code
+  - Used Spring MVC for request/response post handling 
+  - Helped group memembers out wih problems by Pair Programming
+
 
 Getting Started
 In Bash use git clone https://github.com/Cunnjoel/Hi2yOu
