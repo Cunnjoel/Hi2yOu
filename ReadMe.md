@@ -6,6 +6,7 @@ Technologies Used:
 Spring Data, Spring Boot, Spring MVC, AWS RDS, PostgreSQL, Angular 2+, AWS S3, Docker, AWS EC2
 
 Roles / Responsibilities:
+
 Joel Cunningham:
   - Worked using Intellij IDEA 2021 and Visual Studio Code for development
   - Formed interactive Post creating web page using HTML, CSS and TypeScript
