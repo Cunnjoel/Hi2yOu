@@ -27,6 +27,16 @@ Zachary Starkey:
   - Used Spring MVC for request/response post handling 
   - Helped group memembers out wih problems by Pair Programming
 
+  Sam Garcia:
+  -Worked using Intellij IDEA 2021 and Visual Studio Code for development
+  -Created user login/register web pages using HTML, CSS, and Typescript
+  -Used Mockito and JUnit to test user layer code
+  -Stylized all of the pages using CSS and HTML to try to have a uniform look throughout the site
+  -Used Spring MVC for request/response user handling 
+  -Utilized GitHub for source control between the team
+  -Created a theme for the webpage/layout
+  -Used Java for coding the backend(anything related to the users functionalities) 
+
 
 Getting Started
 In Bash use git clone https://github.com/Cunnjoel/Hi2yOu
