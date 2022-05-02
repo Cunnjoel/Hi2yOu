@@ -38,6 +38,15 @@ Zachary Starkey:
   - Created a theme for the webpage/layout
   - Used Java for coding the backend(anything related to the users functionalities) 
  
+ Jeffrey Yost
+  - Managed my code versioning utilizing Git.
+  - Managed pull requests on GitHub.
+  - Created JUnit testing for the posts.
+  - Worked on displaying all posts on the backend and the frontend.
+  - Worked on creating a post on the backend.
+  - Set up error checking/logging for the posts.
+  - Did Java Docs for the post repos.
+  - Created some post methods in the service module.
 
 Getting Started
 In Bash use git clone https://github.com/Cunnjoel/Hi2yOu
